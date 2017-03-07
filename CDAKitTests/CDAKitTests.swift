@@ -36,7 +36,7 @@ class CDAKitNonStandardCDATests: XCTestCase {
     //let's try importing, but with the "non-standard" support disabled
     CDAKGlobals.sharedInstance.attemptNonStandardCDAImport = false
     do {
-      let record = try CDAKImport_BulkRecordImporter.importRecord(doc)
+      let _ = try CDAKImport_BulkRecordImporter.importRecord(doc)
       XCTFail()
     }
     catch {

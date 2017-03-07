@@ -50,13 +50,9 @@ class HealthKitRecordTest: XCTestCase {
       //let's explicitly set our preferred units to metric for a few things
       CDAKHealthKitBridge.sharedInstance.CDAKHKQuantityTypeDefaultUnits[.HKQuantityTypeIdentifierHeight] = "cm"
       CDAKHealthKitBridge.sharedInstance.CDAKHKQuantityTypeDefaultUnits[.HKQuantityTypeIdentifierBodyMass] = "kg"
-      
-//      for sample in hkRecord.samples {
-//        print(sample.metadata)
-//      }
-      
+        
       //now let's convert back from HealthKit to our model
-      let hdsRecord = hkRecord.exportAsCDAKRecord()
+      let _ = hkRecord.exportAsCDAKRecord()
       
       //render from our model to CDA - format set to .ccda (could also do .c32)
       //print(hdsRecord.export(inFormat: .ccda))
@@ -81,9 +77,6 @@ class HealthKitRecordTest: XCTestCase {
     aVital.start_time = Date().timeIntervalSince1970
     aVital.end_time = Date().timeIntervalSince1970
     
-    //let xmlString = aRecord.export(inFormat: .ccda)
-    //print(xmlString)
-    
     let hkRecord = CDAKHKRecord(fromCDAKRecord: aRecord)
     
     XCTAssertEqual(hkRecord.samples.count, aRecord.vital_signs.count)
@@ -94,15 +87,11 @@ class HealthKitRecordTest: XCTestCase {
     let aQtyType = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.height)
     let hkHeight = HKQuantitySample(type: aQtyType!, quantity: aQty, start: Date(), end: Date())
     hkRecord.samples.append(hkHeight)
-    //print(hkRecord)
     
     //NOTE: for now you need to make sure you set the units before you import the record
     // the unit types, etc. are set on the way _in_
     CDAKHealthKitBridge.sharedInstance.CDAKHKQuantityTypeDefaultUnits[.HKQuantityTypeIdentifierHeight] = "cm"
     let aSecondRecord = hkRecord.exportAsCDAKRecord()
-    //CDAKHKQuantityTypeDefaultUnits
-    //CDAKHealthKitBridge.sharedInstance.CDAKHKQuantityTypeDefaultUnits)
- //   print(aSecondRecord.export(inFormat: .ccda))
     
     XCTAssertEqual(hkRecord.samples.count, aSecondRecord.vital_signs.count)
   }
@@ -174,15 +163,8 @@ class HealthKitRecordTest: XCTestCase {
     let doc = TestHelpers.fileHelpers.load_xml_string_from_file("Rosa.ccda")
     do {
       let record = try CDAKImport_BulkRecordImporter.importRecord(doc)
-      print(record.vital_signs)
-
       let hkRecord = CDAKHKRecord(fromCDAKRecord: record)
-      print(hkRecord.samplesDescription)
-      
-      let hdsRecord = hkRecord.exportAsCDAKRecord()
-      print(hdsRecord)
-      
-      //print(hdsRecord.export(inFormat: .ccda))
+      let _ = hkRecord.exportAsCDAKRecord()
     }
     catch {
       XCTFail()
@@ -243,11 +225,7 @@ class HealthKitRecordTest: XCTestCase {
     hds_hrEntry.values.append(CDAKPhysicalQuantityResultValue(scalar: 86, units: "count/min"))
     hds_hrEntry.codes.addCodes("LOINC", code: "8867-4")
     
-    //let hk_hrEntry = CDAKHealthKitBridge.heartRate(hds_hrEntry)
-    let hk_hrEntry = CDAKHealthKitBridge.sharedInstance.sampleForEntry(hds_hrEntry, forSampleType: CDAKHealthKitBridge.CDAKHKQuantityIdentifiers.HKQuantityTypeIdentifierHeartRate)
-    print("hk_hrEntry is set to \(hk_hrEntry)")
-    
-    //CDAKHealthKitBridge.heartRate
+    let _ = CDAKHealthKitBridge.sharedInstance.sampleForEntry(hds_hrEntry, forSampleType: CDAKHealthKitBridge.CDAKHKQuantityIdentifiers.HKQuantityTypeIdentifierHeartRate)
   }
 
   func testDefaults_HKSampleType_units() {
@@ -264,9 +242,8 @@ class HealthKitRecordTest: XCTestCase {
 
 
   func testCustomBridgeCDAStringFinder() {
-    //var cdaStringUnitFinder : ((unit_string: String?, typeIdentifier: String? ) -> HKUnit?)?
     
-    var cdaStringUnitFinder_nil : ((_ unit_string: String?, _ typeIdentifier: String? ) -> HKUnit?) = {
+    let cdaStringUnitFinder_nil : ((_ unit_string: String?, _ typeIdentifier: String? ) -> HKUnit?) = {
       (unit_string: String?, typeIdentifier: String?) -> HKUnit? in
       
       return nil
@@ -284,7 +261,7 @@ class HealthKitRecordTest: XCTestCase {
 
     XCTAssertNil(hk_hrEntry_nil)
     
-    var cdaStringUnitFinder : ((_ unit_string: String?, _ typeIdentifier: String? ) -> HKUnit?) = {
+    let cdaStringUnitFinder : ((_ unit_string: String?, _ typeIdentifier: String? ) -> HKUnit?) = {
       (unit_string: String?, typeIdentifier: String?) -> HKUnit? in
       
       if unit_string == "beats" {

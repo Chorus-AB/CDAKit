@@ -38,20 +38,20 @@ class GRMustacheTest: XCTestCase {
     catch let error as MustacheError {
       // Parse error at line 2 of template /path/to/template.mustache:
       // Unclosed Mustache tag.
-      error.description
+      print(error.description)
       
       // TemplateNotFound, ParseError, or RenderError
-      error.kind
+      print(error.kind)
       
       // The eventual template at the source of the error. Can be a path, a URL,
       // a resource name, depending on the repository data source.
-      error.templateID
+      print(error.templateID ?? "")
       
       // The eventual faulty line.
-      error.lineNumber
+      print(error.lineNumber ?? "")
       
       // The eventual underlying error.
-      error.underlyingError
+      print(error.underlyingError ?? "")
     } catch {
       //ehhhh
     }
@@ -195,7 +195,7 @@ class GRMustacheTest: XCTestCase {
   
   func testFilter() {
     
-    let reverse = Filter { (rendering: Rendering) in
+    let _ = Filter { (rendering: Rendering) in
       let reversedString = String(rendering.string.characters.reversed())
       return Rendering(reversedString, rendering.contentType)
     }
@@ -231,7 +231,7 @@ class GRMustacheTest: XCTestCase {
   
   func testDateFilter() {
     
-    let DateAsNumber = Filter { (box: MustacheBox) in
+    let _ = Filter { (box: MustacheBox) in
       
       if box.value == nil {
         return Box(Date().stringFormattedAsHDSDateNumber)
@@ -274,17 +274,6 @@ class GRMustacheTest: XCTestCase {
   
   func testCodeDisplayFilter() {
     
-    //code_display(entry, {'tag_name' => 'value', 'extra_content' => 'xsi:type="CD"', 'preferred_code_sets' => ['SNOMED-CT']})
-    
-//    let code_display = VariadicFilter { (boxes: [MustacheBox]) in
-//      var result = ""
-//      for box in boxes {
-//        //sum += (box.value as? Int) ?? 0
-//        //result += "\(box.value.dynamicType) = \(box.value)\n"
-//        result += "\(box.value)\n"
-//      }
-//      return Box(result)
-//    }
     
     func convertStringToDictionary(_ text: String) -> [String:Any] {
       if let data = text.data(using: String.Encoding.utf8) {
@@ -453,11 +442,9 @@ class GRMustacheTest: XCTestCase {
   func testPartialTemplate() {
     do {
       
-
-      
       //set this BEFORE you create the template
       // disables all HTML escaping
-   //   Mustache.DefaultConfiguration.contentType = .Text
+      //   Mustache.DefaultConfiguration.contentType = .Text
 
       let bundle = Bundle(for: type(of: self))
       let path = bundle.path(forResource: "record", ofType: "mustache")
@@ -508,49 +495,6 @@ class GRMustacheTest: XCTestCase {
     }
   }
   
-//  func testWithTemplateGenerator() {
-//    
-//    let template_helper = CDAKTemplateHelper(template_format: "c32", template_subdir: "c32", template_directory: nil)
-//    let template = template_helper.template("show")
-//
-//    let data = ["patient": bigTestRecord]
-//    
-//    // USE: telecoms:{{#each(patient.telecoms)}} hi {{value}} {{use}} {{/}}
-//    template.registerInBaseContext("each", Box(StandardLibrary.each))
-//    // USE: {{ UUID_generate(nil) }}
-//    template.registerInBaseContext("UUID_generate", Box(MustacheFilters.UUID_generate))
-//    // USE: {{ date_as_number(z) }}, nil: {{ date_as_number(nil) }}
-//    template.registerInBaseContext("date_as_number", Box(MustacheFilters.DateAsNumber))
-//    // USE: {{ value_or_null_flavor(entry.as_point_in_time) }}
-//    template.registerInBaseContext("value_or_null_flavor", Box(MustacheFilters.value_or_null_flavor))
-//    template.registerInBaseContext("oid_for_code_system", Box(MustacheFilters.oid_for_code_system))
-//    template.registerInBaseContext("is_numeric", Box(MustacheFilters.is_numeric))
-//    template.registerInBaseContext("is_bool", Box(MustacheFilters.is_bool))
-//
-//
-//    do {
-//      let rendering = try template.render(Box(data))
-//      
-//      print("trying to render...")
-//      print("======================")
-//      print(rendering)
-//      print("======================")
-//      print("rendering complete.")
-//    }
-//    catch let error as MustacheError {
-//      print("Failed to process template. Line \(error.lineNumber) - \(error.kind). Error: \(error.description)")
-//    }
-//    catch let error as NSError {
-//      print(error.localizedDescription)
-//    }
-//    
-////    let str = "{\"name\":\"James\"}"
-////    
-////    let result = convertStringToDictionary(str) // ["name": "James"]
-//
-//    
-//  }
-  
   func transformAnyObjectDict(_ dict: [String:AnyObject]) -> [String:Any?] {
     var otherJson: [String:Any?] = [:]
     for(key, value) in dict {
@@ -561,10 +505,8 @@ class GRMustacheTest: XCTestCase {
         var values = [Any]()
         for v in value {
           if let v = v as? [String:AnyObject] {
-            //print("going to try to convert nested for key: \(key)")
             values.append(transformAnyObjectDict(v))
           } else {
-            //print("appending array entry for key: \(key)")
             values.append(v as Any)
           }
         }
@@ -578,76 +520,11 @@ class GRMustacheTest: XCTestCase {
     return otherJson
   }
   
-//  func testLoadFileFromPath() {
-//    
-//    let json_files : [String] = [
-////      "506afdf87042f9e32c000069", //Mary Berry
-////      "506afdf87042f9e32c000001", //Barry Berry
-//      "4dcbecdb431a5f5878000004" //Rosa Vasquez
-//    ]
-//
-//    let format = "c32"
-//    
-//    for json_file in json_files {
-//      let json = loadJSONFromBundleFile(json_file)
-//      if let json = json {
-//        
-//        var otherJson: [String:Any?] = [:]
-//        otherJson = transformAnyObjectDict(json)
-//        let test_record = CDAKRecord(event: otherJson)
-////        print(test_record)
-//        
-//        
-//        
-//        let template_helper = CDAKTemplateHelper(template_format: format, template_subdir: format, template_directory: nil)
-//        let template = template_helper.template("show")
-//        
-//        let data = ["patient": test_record]
-//        
-//        // USE: telecoms:{{#each(patient.telecoms)}} hi {{value}} {{use}} {{/}}
-//        template.registerInBaseContext("each", Box(StandardLibrary.each))
-//        // USE: {{ UUID_generate(nil) }}
-//        template.registerInBaseContext("UUID_generate", Box(MustacheFilters.UUID_generate))
-//        // USE: {{ date_as_number(z) }}, nil: {{ date_as_number(nil) }}
-//        template.registerInBaseContext("date_as_number", Box(MustacheFilters.DateAsNumber))
-//        template.registerInBaseContext("date_as_string", Box(MustacheFilters.DateAsHDSString))
-//        
-//        // USE: {{ value_or_null_flavor(entry.as_point_in_time) }}
-//        template.registerInBaseContext("value_or_null_flavor", Box(MustacheFilters.value_or_null_flavor))
-//        template.registerInBaseContext("oid_for_code_system", Box(MustacheFilters.oid_for_code_system))
-//        template.registerInBaseContext("is_numeric", Box(MustacheFilters.is_numeric))
-//        template.registerInBaseContext("is_bool", Box(MustacheFilters.is_bool))
-//        
-//        
-//        do {
-//          let rendering = try template.render(Box(data))
-//          
-//          print("trying to render...")
-//          print("======================")
-//          print(rendering)
-//          print("======================")
-//          print("rendering complete.")
-//        }
-//        catch let error as MustacheError {
-//          print("Failed to process template. Line \(error.lineNumber) - \(error.kind). Error: \(error.description)")
-//        }
-//        catch let error as NSError {
-//          print(error.localizedDescription)
-//        }
-//
-//        
-//        
-//      }
-//    }
-//    
-//  }
-  
   func loadJSONFromBundleFile(_ filename: String) -> [String:AnyObject]? {
     
     let fileName = "\(filename)"
     let directory: String? = nil
     let bundle = Bundle(for: type(of: self))
-    //NSBundle.mainBundle()
 
     guard let filePath = bundle.path(forResource: fileName, ofType: "json", inDirectory: directory) else {
       fatalError("Failed to find file '\(fileName)' in path '\(directory)' ")
@@ -664,13 +541,6 @@ class GRMustacheTest: XCTestCase {
   //http://stackoverflow.com/questions/30480672/how-to-convert-a-json-string-to-a-dictionary
   func convertStringToDictionary(_ text: String) -> [String:AnyObject]? {
     if let data = text.data(using: String.Encoding.utf8) {
-//      do {
-//        let json = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? [String:AnyObject]
-//        return json
-//      }
-//      catch let error as NSError {
-//        print(error.localizedDescription)
-//      }
       return convertDataToDictionary(data)
     }
     return nil
@@ -692,11 +562,7 @@ class GRMustacheTest: XCTestCase {
     let doc = TestHelpers.fileHelpers.load_xml_string_from_file("Patient-673")
     do {
       let record = try CDAKImport_BulkRecordImporter.importRecord(doc)
-      //record.header = nil
-      
-      let x = record.export(inFormat: .c32)
-      //      let x = record.export(inFormat: .ccda)
-      print(x)
+      let _ = record.export(inFormat: .c32)
     }
     catch {
     }
@@ -706,11 +572,7 @@ class GRMustacheTest: XCTestCase {
     let doc = TestHelpers.fileHelpers.load_xml_string_from_file("Patient-673")
     do {
       let record = try CDAKImport_BulkRecordImporter.importRecord(doc)
-      //record.header = nil
-      
-      let x = record.export(inFormat: .ccda)
-      //      let x = record.export(inFormat: .ccda)
-      print(x)
+      let _ = record.export(inFormat: .ccda)
     }
     catch {
     }
@@ -720,8 +582,7 @@ class GRMustacheTest: XCTestCase {
 
     var header: CDAKQRDAHeader?
     var records: [CDAKRecord] = []
-    var files: [String] = ["Patient-673", "Vitera_CCDA_SMART_Sample", "export_cda"]
-    
+    let files: [String] = ["Patient-673", "Vitera_CCDA_SMART_Sample", "export_cda"]
 
     for file in files {
       let doc = TestHelpers.fileHelpers.load_xml_string_from_file(file)
@@ -740,7 +601,6 @@ class GRMustacheTest: XCTestCase {
     
     for record in records {
       XCTAssertEqual(record.header?.description, header?.description)
-      //print(record.export(inFormat: .ccda))
     }
   }
 
@@ -749,13 +609,6 @@ class GRMustacheTest: XCTestCase {
     let doc = TestHelpers.fileHelpers.load_xml_string_from_file("Vitera_CCDA_SMART_Sample")
     do {
       let record = try CDAKImport_BulkRecordImporter.importRecord(doc)
-      //record.header = nil
-      
-//      for encounter in record.encounters {
-//        print(encounter.performer)
-//      }
-      
-      //let x = record.export(inFormat: .ccda)
       let x = record.export(inFormat: .c32)
       print(x)
     }
@@ -768,50 +621,12 @@ class GRMustacheTest: XCTestCase {
     let doc = TestHelpers.fileHelpers.load_xml_string_from_file("Patient-673")
     do {
       let record = try CDAKImport_BulkRecordImporter.importRecord(doc)
-      
-//      print(record.header?.json)
-      
-//      let repo = TemplateRepository(
-//        bundle: CDAKCommonUtility.bundle,
-//        templateExtension: "mustache")
-
       let repo = TemplateRepository(bundle: CDAKCommonUtility.bundle)
-//      print(CDAKCommonUtility.bundle)
-      
-      
-//      let filemanager:NSFileManager = NSFileManager()
-//      let files = filemanager.enumeratorAtPath(CDAKCommonUtility.bundle.bundlePath)
-//      while let file = files?.nextObject() {
-//        print(file)
-//      }
 
-//      let enumerator = NSFileManager.defaultManager().enumeratorAtPath(CDAKCommonUtility.bundle.bundlePath)
-//      var filePaths = [NSURL]()
-//      
-//      while let filePath = enumerator?.nextObject() as? String {
-//        print(filePath)
-//      }
-
-      
-      
-//      let repo = TemplateRepository(directoryPath: "/health-data-standards/templates")
-
-      //      let repo = TemplateRepository(bundle: NSBundle.mainBundle())
-      
-//      let repo = TemplateRepository(bundle: NSBundle(forClass: self.dynamicType))
-      
-      //NSBundle.mainBundle()
-      
-//      print(repo)
-      
-      let format = "c32"
-      //c32_show.c32.mustache
-//      let template_name = "\(format)_show.\(format).mustache"
       let template_name = "c32_show.c32"
       do {
-//        let template = try repo.template(named: "health-data-standards/templates/\(format)/\(format)_show.\(format)")
+
         let template = try repo.template(named: template_name)
-        
         
         let data = ["patient": record]
         
@@ -846,65 +661,10 @@ class GRMustacheTest: XCTestCase {
       catch {
         print("no template found '\(template_name)'")
       }
-      
-//      let template_helper = CDAKTemplateHelper(template_format: "c32", template_subdir: "c32", template_directory: nil)
-//      let template = template_helper.template("show")
-      
-      
-      
-      
     }
     catch {
       XCTFail()
     }
   }
-  
-//  func testHeaderGeneration() {
-//    let doc = TestHelpers.fileHelpers.load_xml_string_from_file("Patient-673")
-//    do {
-//      let record = try CDAKImport_BulkRecordImporter.importRecord(doc)
-//      
-//      let template_helper = CDAKTemplateHelper(template_format: "cat1", template_subdir: "cat1", template_directory: nil)
-//      let template = template_helper.template("header")
-//      
-//      record.header = nil
-//      
-//      let data = ["patient": record]
-//      
-//      template.registerInBaseContext("each", Box(StandardLibrary.each))
-//      template.registerInBaseContext("UUID_generate", Box(MustacheFilters.UUID_generate))
-//      template.registerInBaseContext("date_as_number", Box(MustacheFilters.DateAsNumber))
-//      template.registerInBaseContext("date_as_string", Box(MustacheFilters.DateAsHDSString))
-//      template.registerInBaseContext("value_or_null_flavor", Box(MustacheFilters.value_or_null_flavor))
-//      template.registerInBaseContext("oid_for_code_system", Box(MustacheFilters.oid_for_code_system))
-//      template.registerInBaseContext("is_numeric", Box(MustacheFilters.is_numeric))
-//      template.registerInBaseContext("is_bool", Box(MustacheFilters.is_bool))
-//      
-//      
-//      do {
-//        let rendering = try template.render(Box(data))
-//        
-//        print("trying to render...")
-//        print("======================")
-//        print(rendering)
-//        print("======================")
-//        print("rendering complete.")
-//      }
-//      catch let error as MustacheError {
-//        print("Failed to process template. Line \(error.lineNumber) - \(error.kind). Error: \(error.description)")
-//      }
-//      catch let error as NSError {
-//        print(error.localizedDescription)
-//      }
-//
-//      
-//      
-//    }
-//    catch {
-//      XCTFail()
-//    }
-//  }
-
-  
   
 }

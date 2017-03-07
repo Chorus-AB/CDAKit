@@ -35,8 +35,7 @@ class Cat1EncounterTransferImporterTest: XCTestCase {
         let nrh = CDAKImport_CDA_NarrativeReferenceHandler()
         nrh.build_id_map(doc)
         
-        let encounters = si.create_entries(doc)
-        //print(encounters)
+        let _ = si.create_entries(doc)
         
       } catch {
         print("boom")
