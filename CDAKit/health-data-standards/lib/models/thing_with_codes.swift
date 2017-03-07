@@ -20,11 +20,7 @@ public protocol CDAKThingWithCodes: class, CDAKJSONExportable {
 extension CDAKThingWithCodes {
   
   internal func single_code_value() -> Bool {
-//    guard let (_, first_val) = codes.first else {
-//      return false
-//    }
     return codes.numberOfDistinctCodes == 1
-    //return codes.count == 1 && first_val.codes.count == 1
   }
   
   internal func codes_to_s() -> String {
@@ -32,7 +28,6 @@ extension CDAKThingWithCodes {
   }
   
   internal func convert_codes_to_s(_ codes: CDAKCodedEntries) -> String {
-//    return codes.map { (code_set, codes) in ("\(code_set): " + codes.map({$0.code}).joinWithSeparator(", ")) }.joinWithSeparator(" ")
     return codes.map { (code_set, codes) in ("\(code_set): " + codes.map({$0.friendlyNarrativeDescription}).joined(separator: ", ")) }.joined(separator: " ")
   }
   
@@ -159,22 +154,7 @@ extension CDAKThingWithCodes {
       if let x = self.codes.findIntersectingCodedEntries(forCodedEntries: some_codes) {
         matching.addCodes(x)
       }
-      //matching.addCodes(<#T##codeSystem: String##String#>, code: <#T##String#>, codeSystemOid: <#T##String?#>, displayName: <#T##String?#>)
     }
-    
-//    for code_system in codes.keys {
-//      //var matching_codes: [String] = []
-//      let all_codes_in_system = code_set.filter({set in set["set"]?.first == code_system})
-//
-//      for entries in all_codes_in_system {
-//        if let entry = entries[code_system] {
-//          if let matchingEntry = codes.findIntersectingCodedEntries(forCodeSystem: code_system, matchingCodes: entry.codes) {
-//            matching[code_system] = matchingEntry
-//          }
-//        }
-//      }
-//    }
-    
     return matching
   }
 
@@ -188,15 +168,6 @@ extension CDAKThingWithCodes {
   internal func add_code(_ code:Any, code_system:String, code_system_oid: String? = nil, display_name: String? = nil) {
     let code_str = String(describing: code)
     codes.addCodes(code_system, code: code_str, codeSystemOid: code_system_oid, displayName: display_name)
-
-    //    let code_str = String(code)
-//    if let cd = codes[code_system] {
-//      if !cd.contains(code_str) {
-//        codes.addCodes(code_system, codes: code_str, codeSystemOid: code_system_oid, displayName: display_name)
-//      }
-//    } else {
-//      codes[code_system] = CDAKCodedEntry(codeSystem: code_system, codes: [code_str], codeSystemOid: code_system_oid, displayName: display_name)
-//    }
   }
 
 

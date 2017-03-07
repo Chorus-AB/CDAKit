@@ -26,7 +26,6 @@ open class CDAKAllergy: CDAKEntry {
   
   // MARK: - Initializers
   public init(type:CDAKCodedEntries, reaction: CDAKEntryDetail? = nil, severity: CDAKEntryDetail? = nil) {
-//  public init(type:CDAKCodedEntries, reaction: CDAKCodedEntries = CDAKCodedEntries(), severity: CDAKCodedEntries = CDAKCodedEntries()) {
     super.init()
     self.type = type
     self.reaction = reaction
@@ -67,12 +66,6 @@ extension CDAKAllergy {
     if type.count > 0 {
       dict["type"] = type.codes.map({$0.jsonDict}) as AnyObject?
     }
-//    if reaction.count > 0 {
-//      dict["reaction"] = reaction.codes.map({$0.jsonDict})
-//    }
-//    if severity.count > 0 {
-//      dict["severity"] = severity.codes.map({$0.jsonDict})
-//    }
     if let reaction = reaction {
       dict["reaction"] = reaction.jsonDict as AnyObject?
     }

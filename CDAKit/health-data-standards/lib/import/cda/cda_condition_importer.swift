@@ -15,7 +15,6 @@ class CDAKImport_CDA_ConditionImporter: CDAKImport_CDA_SectionImporter {
   
   override init(entry_finder: CDAKImport_CDA_EntryFinder = CDAKImport_CDA_EntryFinder(entry_xpath: "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.88.11.83.103']/cda:entry/cda:act/cda:entryRelationship/cda:observation")) {
     super.init(entry_finder: entry_finder)
-    //NOTE: super.init() was NOT called for this class in the original Ruby
     code_xpath = "./cda:value"
     status_xpath = "./cda:entryRelationship/cda:observation[cda:templateId/@root='2.16.840.1.113883.10.20.1.50']/cda:value"
     description_xpath = "./cda:text/cda:reference[@value]"

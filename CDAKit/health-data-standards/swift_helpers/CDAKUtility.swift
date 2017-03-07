@@ -10,7 +10,7 @@ import Foundation
 
 
 /**
-Warning - This class is due for removal.  DO NOT USE.
+TODO: Warning - This class is due for removal.  DO NOT USE.
  
  This is used for internal testing to mimic certain sections of the original Ruby.
  
@@ -114,18 +114,6 @@ class CDAKUtility {
     var result: CDAKCodedEntries = CDAKCodedEntries()
     print("dictionaryStringArray:value = \(value)")
     if let value = value as? CDAKCodedEntries { return value }
-//    else if let value = value as? [String:Any] {
-//      print("dictionaryStringArray:value = \(value) WITH TYPE [String:Any]")
-//    }
-//    else if let value = value as? [String:[Any]] {
-//      print("dictionaryStringArray:value = \(value) WITH TYPE [String:[Any]]")
-//    }
-//    else if let value = value as? [String:[String]] {
-//      print("dictionaryStringArray:value = \(value) WITH TYPE [String:[String]]")
-//    }
-//    else if let value = value as? [String:String] {
-//      print("dictionaryStringArray:value = \(value) WITH TYPE [String:String]")
-//    }
     else if let value = value as? [String:[String]] {
       for (key, value) in value {
         for code in value {
@@ -138,22 +126,18 @@ class CDAKUtility {
     else if let value = value as? [String:Any?] {
       for (key, value) in value {
         if let value = value {
-          //print(value)
           if let values = value as? [Any?] {
             for code in values {
               if let code = code as? String , code != "<null>" {
                 result.addCodes(key, code: code)
               }
             }
-            //result[key] = values.filter({$0 != nil}).map({String($0)}).filter({$0 != "<null>"})
           } else if let values = value as? [Any] {
-            //result.addCodes(key, codes: values.map({String($0)}).filter({$0 != "<null>"}))
             for code in values {
               if let code = code as? String , code != "<null>" {
                 result.addCodes(key, code: code)
               }
             }
-            //result[key] = values.map({String($0)}).filter({$0 != "<null>"})
           }
         }
       }
@@ -167,7 +151,6 @@ class CDAKUtility {
   
   class func arrayOfCodedEntries(_ value: Any?) -> [CDAKCodedEntries] {
     var result: [CDAKCodedEntries] = []
-    //print(value)
 
     if let value = value as? [Any] {
       for value in value {
@@ -186,9 +169,7 @@ class CDAKUtility {
   
   class func dictionaryAny(_ value: Any?) -> [String:Any?] {
     let result: [String:Any?] = [:]
-    //print(value)
     if let value = value as? [String:Any?] {
-      //print(value)
       return value
     }
     return result
@@ -648,6 +629,8 @@ class CDAKUtility {
         
       } catch let error as NSError {
         print(error.localizedDescription)
+      } catch {
+        print(error.localizedDescription) // Swift will automatically bind the exception thrown to 'error'.
       }
     }
     return [:]

@@ -130,10 +130,7 @@ class CDAKImport_C32_PatientImporter {
    Attention: Changed original Ruby
   */
   func create_c32_hash(_ record: CDAKRecord, doc: XMLDocument) {
-    // original Ruby was using "send" - which we can't really do.  So I'm not doing that...
-    // I'm going to inspect the section type and then just manually say "oh, you're a Condition" etc.
-    // and set things that way.  Not super elegant, but - at least I'll know what's going on
-    
+
     let nrh = CDAKImport_CDA_NarrativeReferenceHandler()
     nrh.build_id_map(doc)
 
@@ -201,7 +198,6 @@ class CDAKImport_C32_PatientImporter {
     }
 
     //# parse race, ethnicity, and spoken language
-    // NOTE: changing this from original CDAK Ruby to support multiple races, ethnicities, and languages
     for race_node in patient_element.xpath("cda:raceCode") {
       if let an_entry = CDAKImport_CDA_SectionImporter.extract_code(race_node, code_xpath: ".", code_system: "CDC Race") {
         patient.race.addCodes(an_entry)

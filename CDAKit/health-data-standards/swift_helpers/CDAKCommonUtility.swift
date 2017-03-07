@@ -17,17 +17,15 @@ class CDAKCommonUtility {
     //if we're in a pod, look for our own bundle in the parent project
     if let bundlePath = frameworkBundle.path(forResource: podName, ofType: "bundle") {
       if let myBundle = Bundle.init(path: bundlePath) {
-        //print("CDAKCommonUtility -> myBundle.bundlePath = '\(myBundle.bundlePath)'")
         return myBundle
       }
     }
     //otherwise, try to just return ourselves like this
-    //print("CDAKCommonUtility -> frameworkBundle = '\(frameworkBundle.bundlePath)'")
     return frameworkBundle
   }
   
   class func classNameAsString(_ obj: Any, removeOptional: Bool = true) -> String {
-    //    //prints more readable results for dictionaries, arrays, Int, etc
+    //prints more readable results for dictionaries, arrays, Int, etc
     var class_name = String(describing: type(of: (obj) as AnyObject)).components(separatedBy: ".").last!
     if removeOptional == true && class_name.contains("Optional") {
       class_name = CDAKCommonUtility.Regex.replaceMatches("(?:^|\")([^\"]*)(?:$|\")", inString: class_name, withString: "")!
@@ -218,6 +216,8 @@ class CDAKCommonUtility {
         return jsonString // NSString(data: rawData, encoding: String.Encoding.utf8.rawValue) as? String
       } catch let error as NSError {
         print(error)
+      } catch {
+        print(error) // Swift will automatically bind the exception thrown to 'error'.
       }
     } else {
       print("jsonStringFromDict - invalid JSON object")

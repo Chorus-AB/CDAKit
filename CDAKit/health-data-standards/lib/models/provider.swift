@@ -210,15 +210,10 @@ open class CDAKProvider: CDAKPersonable, CDAKJSONInstantiable, Hashable, Equatab
       let p = resolve_function(provider_hash, patient ?? nil)
       return p
     } else {
-      //let p = CDAKGlobals.sharedInstance.CDAKProviders.filter({ $0.npi == nil }).first
-      //print("resolve_provider matched hash placeholder")
-      //print("resolve_provider matched hash: {\(provider_hash)} to provider: {\(p)}")
-      //return p
       return nil
     }
   }
-  
-  
+
   
   // MARK: Standard properties
   ///Debugging description

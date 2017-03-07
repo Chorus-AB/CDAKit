@@ -168,9 +168,6 @@ open class CDAKRecord: NSObject, NSCopying, CDAKPropertyAddressable {
   open var addresses: [CDAKAddress] {
     get {return _addresses}
     set {
-//      for c in newValue {
-//        c.record = self
-//      }
       _addresses = newValue
     }
   }
@@ -180,9 +177,6 @@ open class CDAKRecord: NSObject, NSCopying, CDAKPropertyAddressable {
   open var telecoms: [CDAKTelecom] {
     get {return _telecoms}
     set {
-//      for c in newValue {
-//        c.record = self
-//      }
       _telecoms = newValue
     }
   }
@@ -190,7 +184,6 @@ open class CDAKRecord: NSObject, NSCopying, CDAKPropertyAddressable {
   
   ///Determines whether patient is currently over the age of 18
   open var over_18: Bool {
-    //Time.at(birthdate) < Time.now.years_ago(18)
     guard let birthdate = birthdate else {
       return false
     }
@@ -1049,9 +1042,6 @@ extension CDAKRecord {
 extension CDAKRecord: CDAKJSONExportable {
     // MARK: - JSON Generation
     ///Dictionary for JSON data
-
-    //public var jsonDict: [String: AnyObject] = [:]
-
 
     public var jsonDict: [String: AnyObject] {
         var dict: [String: AnyObject] = [:]

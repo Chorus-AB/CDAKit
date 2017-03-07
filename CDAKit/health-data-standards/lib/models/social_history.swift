@@ -16,5 +16,3 @@ Social History
 */
 open class CDAKSocialHistory: CDAKEntry {
 }
-
-

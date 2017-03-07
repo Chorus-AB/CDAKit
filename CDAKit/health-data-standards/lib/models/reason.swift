@@ -9,14 +9,9 @@
 import Foundation
 import Mustache
 
-//NOTE: deviating from original Ruby again
-// this was NOT an CDAKEntry.  Needed to do this for the generalized importer
-// it was treating everything like an entry because it had similar-ish fields
-//CDAKJSONInstantiable, CustomStringConvertible
-/**
-  Reason
-*/
+/** Reason */
 open class CDAKReason: CDAKEntry {
+
   // MARK: Standard properties
   ///Debugging description
   override open var description: String {
@@ -24,16 +19,3 @@ open class CDAKReason: CDAKEntry {
   }
   
 }
-
-//extension CDAKReason: MustacheBoxable {
-//  var boxedValues: [String:MustacheBox] {
-//    return [
-//      "codes" :  Box(codes),
-//      "description" : Box(item_description)
-//    ]
-//  }
-//  
-//  var mustacheBox: MustacheBox {
-//    return Box(boxedValues)
-//  }
-//}

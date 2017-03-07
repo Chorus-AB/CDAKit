@@ -16,11 +16,8 @@ class CDAKImport_C32_CareGoalImporter: CDAKImport_CDA_SectionImporter {
     entry_class = CDAKEntry.self
   }
 
-  // NOTE this returns a generic "CDAKEntry" - but it could be any number of sub-types
   override func create_entry(_ goal_element: XMLElement, nrh: CDAKImport_CDA_NarrativeReferenceHandler = CDAKImport_CDA_NarrativeReferenceHandler()) -> CDAKEntry? {
     
-    //original Ruby used "name" - which is "node_name"
-    //looks like Fuzi calls this "tag"
     var importer: CDAKImport_CDA_SectionImporter
     switch goal_element.tag! {
       case "observation": importer = CDAKImport_CDA_ResultImporter()
@@ -28,8 +25,6 @@ class CDAKImport_C32_CareGoalImporter: CDAKImport_CDA_SectionImporter {
       case "substanceAdministration": importer = CDAKImport_CDA_MedicationImporter()
       case "encounter": importer = CDAKImport_CDA_EncounterImporter()
       case "procedure": importer = CDAKImport_CDA_ProcedureImporter()
-      //this bit here - not in the original Ruby - added our own entry_finder into the mix...
-      //was originally sending nil arguments
     default: importer = CDAKImport_CDA_SectionImporter(entry_finder: self.entry_finder) //#don't need entry xpath, since we already have the entry
     }
     

@@ -14,6 +14,24 @@
  These keys are used to look up specific HL7 OIDs, so it's important they be used consistently
  */
 public struct CDAKVocabularyKeys {
+  // Swedish keys
+  // SNOMED-CT-SE, Systematized Nomenclature of Clinical Terms. http://www.socialstyrelsen.se/nationellehalsa/snomed-ct
+  public static let SNOMEDCTSE = "SNOMED-CT-SE"
+  // ICD-10-SE. International Classification of Diseases, Tenth Revision, http://www.socialstyrelsen.se/klassificeringochkoder/diagnoskodericd-10
+  public static let ICD10SE = "ICD-10-SE"
+  // HSA-ID. Id for objects in the HSA-catalogue. https://www.inera.se/TJANSTER--PROJEKT/HSA/
+  public static let HSAID = "HSA-ID"
+  // Swedish social security number formats
+  public static let PNR = "Personnummer"  // http://www.skatteverket.se/
+  public static let SAMORDNR = "Samordningsnummer"  // http://www.skatteverket.se/
+  public static let SLLRESERVNR = "SLL-Reservnummer" // SLL HSF
+  // Swedish pharmaceuticals
+  public static let ATC = "ATC"  // Classification of medicines http://www.whocc.no/atcddd/
+  public static let ATCSKL = "ATC SKL"  // Classification of medicines http://www.lakemedelsverket.se/
+  public static let NPL = "NPL-id"  // NPL-id describes a medicine from a given producer with a given preparation, dosage and taste. http://www.lakemedelsverket.se/
+  public static let NPLPACK = "NPL-pack-id"  // NPL-pack-id describes in addition to NPL-id, also packaging size. http://www.lakemedelsverket.se/
+
+
   /// Logical Observation Identifiers Names and Codes. Created and managed by the Regenstrief Institute, Inc.
   public static let LOINC = "LOINC"
   /// SNOMED-CT, Systematized Nomenclature of Clinical Terms. Created by the College of American Pathologists (CAP) and now managed by the International Health Terminology Standards Development Organisation  (IHTSDO)

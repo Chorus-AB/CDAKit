@@ -16,8 +16,8 @@ internal protocol CDAKJSONInstantiable {
   init(event: [String:Any?])
 }
 
-//this should be removed
-// individual classes will handle this, NOT a Ruby-like reflection mechanism
+//TODO: this should be removed
+//individual classes will handle this, NOT a Ruby-like reflection mechanism
 
 extension CDAKJSONInstantiable {
   func initFromEventList(_ event: [String:Any?]) {

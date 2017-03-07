@@ -21,6 +21,8 @@ open class CDAKQRDAHeader {
   //NOTE: not originally in QRDA header.  Adding because we want to be able to vary this
   open var confidentiality: CDAKConfidentialityCodes = .Normal
   open var title: String?
+
+  public init() {}
 }
 
 extension CDAKQRDAHeader: CustomStringConvertible {

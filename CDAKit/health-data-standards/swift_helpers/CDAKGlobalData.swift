@@ -19,8 +19,6 @@ open class CDAKGlobals {
   open static let sharedInstance = CDAKGlobals()
   
   fileprivate init() {
-    //CDAKDefaultMetadata = CDAKQRDAHeader()
-    //CDAKDefaultMetadata.confidentiality = .Normal
   }
 
   /**

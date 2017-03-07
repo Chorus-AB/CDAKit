@@ -16,15 +16,11 @@
 		38359E0C1C7B774400CCC036 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 38359E091C7B774400CCC036 /* Podfile */; };
 		384E23111C737A8C009B9DED /* 170.314(b)(1)InPt_Discharge Summary CED Type.xml in Resources */ = {isa = PBXBuildFile; fileRef = 384E23101C737A8C009B9DED /* 170.314(b)(1)InPt_Discharge Summary CED Type.xml */; };
 		384E23141C738E4E009B9DED /* CDAKJSONInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E23131C738E4E009B9DED /* CDAKJSONInstantiable.swift */; };
-		384E23171C73C517009B9DED /* MetadataImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E23161C73C517009B9DED /* MetadataImporter.swift */; };
-		384E231A1C73C764009B9DED /* CDAKQRDAId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E23191C73C764009B9DED /* CDAKQRDAId.swift */; };
 		384E231C1C73C77F009B9DED /* CDAKQRDACustodian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E231B1C73C77F009B9DED /* CDAKQRDACustodian.swift */; };
 		384E231E1C73C78B009B9DED /* CDAKQRDAAuthor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E231D1C73C78B009B9DED /* CDAKQRDAAuthor.swift */; };
 		384E23201C73C797009B9DED /* CDAKQRDADevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E231F1C73C797009B9DED /* CDAKQRDADevice.swift */; };
 		384E23221C73C7A2009B9DED /* CDAKQRDAHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E23211C73C7A2009B9DED /* CDAKQRDAHeader.swift */; };
 		384E23241C73C7CE009B9DED /* CDAKQRDALegalAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E23231C73C7CE009B9DED /* CDAKQRDALegalAuthenticator.swift */; };
-		384E23261C73C7DB009B9DED /* CDAKQRDAOrganization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E23251C73C7DB009B9DED /* CDAKQRDAOrganization.swift */; };
-		384E23281C73C7E5009B9DED /* CDAKQRDAPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E23271C73C7E5009B9DED /* CDAKQRDAPerson.swift */; };
 		384E232A1C73CC96009B9DED /* CDAKConfidentialityCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E23291C73CC96009B9DED /* CDAKConfidentialityCodes.swift */; };
 		384E232D1C73CD22009B9DED /* cat1_header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E232C1C73CD22009B9DED /* cat1_header.swift */; };
 		384E232F1C73D89B009B9DED /* CDAKQRDAHeaderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E232E1C73D89B009B9DED /* CDAKQRDAHeaderTest.swift */; };
@@ -47,11 +43,6 @@
 		389170411C6CC1EE00A31299 /* CDAKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389170401C6CC1EE00A31299 /* CDAKitTests.swift */; };
 		389170601C6CD74500A31299 /* CDAKitDefaultHealthKitTermMap.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3891705E1C6CD74500A31299 /* CDAKitDefaultHealthKitTermMap.plist */; };
 		389170611C6CD74500A31299 /* CDAKitHealthKitBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891705F1C6CD74500A31299 /* CDAKitHealthKitBridge.swift */; };
-		389170671C6CD7A500A31299 /* author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389170621C6CD7A500A31299 /* author.swift */; };
-		389170681C6CD7A500A31299 /* base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389170631C6CD7A500A31299 /* base.swift */; };
-		389170691C6CD7A500A31299 /* change_info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389170641C6CD7A500A31299 /* change_info.swift */; };
-		3891706A1C6CD7A500A31299 /* link_info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389170651C6CD7A500A31299 /* link_info.swift */; };
-		3891706B1C6CD7A500A31299 /* pedigree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389170661C6CD7A500A31299 /* pedigree.swift */; };
 		389170951C6CD7C800A31299 /* address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891706C1C6CD7C800A31299 /* address.swift */; };
 		389170961C6CD7C800A31299 /* allergy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891706D1C6CD7C800A31299 /* allergy.swift */; };
 		389170971C6CD7C800A31299 /* care_goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891706E1C6CD7C800A31299 /* care_goal.swift */; };
@@ -96,7 +87,6 @@
 		389170C01C6CD7FF00A31299 /* code_system_helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389170BE1C6CD7FF00A31299 /* code_system_helper.swift */; };
 		389170C11C6CD7FF00A31299 /* hl7_helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389170BF1C6CD7FF00A31299 /* hl7_helper.swift */; };
 		389170C51C6CD81900A31299 /* HDSExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389170C21C6CD81900A31299 /* HDSExport.swift */; };
-		389170C61C6CD81900A31299 /* template_helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389170C31C6CD81900A31299 /* template_helper.swift */; };
 		389170C71C6CD81900A31299 /* view_helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389170C41C6CD81900A31299 /* view_helper.swift */; };
 		389170CD1C6CD83700A31299 /* c32_care_goal_importer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389170C81C6CD83700A31299 /* c32_care_goal_importer.swift */; };
 		389170CE1C6CD83700A31299 /* c32_condition_importer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389170C91C6CD83700A31299 /* c32_condition_importer.swift */; };
@@ -140,7 +130,6 @@
 		3891711C1C6CD8A500A31299 /* Mustache+Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389171101C6CD8A500A31299 /* Mustache+Filters.swift */; };
 		3891711D1C6CD8A500A31299 /* NSDate+Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389171111C6CD8A500A31299 /* NSDate+Formatters.swift */; };
 		3891711E1C6CD8A500A31299 /* NSObject+PropertyNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389171121C6CD8A500A31299 /* NSObject+PropertyNames.swift */; };
-		3891711F1C6CD8A500A31299 /* String+CryptoExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389171131C6CD8A500A31299 /* String+CryptoExtensions.swift */; };
 		389171201C6CD8A500A31299 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389171141C6CD8A500A31299 /* String+Extensions.swift */; };
 		389171211C6CD8A500A31299 /* CDAKCommonUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389171151C6CD8A500A31299 /* CDAKCommonUtility.swift */; };
 		389171331C6CD8BA00A31299 /* c32_allergies_no_current.c32.mustache in Resources */ = {isa = PBXBuildFile; fileRef = 389171221C6CD8BA00A31299 /* c32_allergies_no_current.c32.mustache */; };
@@ -308,6 +297,10 @@
 		38FCF8D81C74F8DA0040979E /* cat1_telecom.cat1.mustache in Resources */ = {isa = PBXBuildFile; fileRef = 38FCF8D71C74F8DA0040979E /* cat1_telecom.cat1.mustache */; };
 		38FCF8DA1C7503750040979E /* cat1_header.cat1.mustache in Resources */ = {isa = PBXBuildFile; fileRef = 38FCF8D91C7503750040979E /* cat1_header.cat1.mustache */; };
 		38FCF8DC1C75039A0040979E /* cat1_header_no_header.cat1.mustache in Resources */ = {isa = PBXBuildFile; fileRef = 38FCF8DB1C75039A0040979E /* cat1_header_no_header.cat1.mustache */; };
+		659F341653311C0883C5C6AB /* release-notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 3852E3021C86188800F1B57D /* release-notes.md */; };
+		659F3792B998D2E0D92AFD80 /* release-notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 3852E3021C86188800F1B57D /* release-notes.md */; };
+		659F398E97205B5AC53A6C40 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 38BC98141C7C9F5600E8F2F4 /* README.md */; };
+		659F39AB11779C6D83C9DF1D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 38BC98141C7C9F5600E8F2F4 /* README.md */; };
 		902E92565FF505C545AB58D8 /* Pods_CDAKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FDAC72237DF962DB8F4084C /* Pods_CDAKit.framework */; };
 		B648D91DC0D0A5DA1C8A7861 /* Pods_CDAKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2659CE5B586D31D29E7610E8 /* Pods_CDAKitTests.framework */; };
 /* End PBXBuildFile section */
@@ -334,15 +327,11 @@
 		38359E091C7B774400CCC036 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		384E23101C737A8C009B9DED /* 170.314(b)(1)InPt_Discharge Summary CED Type.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "170.314(b)(1)InPt_Discharge Summary CED Type.xml"; sourceTree = "<group>"; };
 		384E23131C738E4E009B9DED /* CDAKJSONInstantiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDAKJSONInstantiable.swift; sourceTree = "<group>"; };
-		384E23161C73C517009B9DED /* MetadataImporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetadataImporter.swift; sourceTree = "<group>"; };
-		384E23191C73C764009B9DED /* CDAKQRDAId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDAKQRDAId.swift; sourceTree = "<group>"; };
 		384E231B1C73C77F009B9DED /* CDAKQRDACustodian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDAKQRDACustodian.swift; sourceTree = "<group>"; };
 		384E231D1C73C78B009B9DED /* CDAKQRDAAuthor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDAKQRDAAuthor.swift; sourceTree = "<group>"; };
 		384E231F1C73C797009B9DED /* CDAKQRDADevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDAKQRDADevice.swift; sourceTree = "<group>"; };
 		384E23211C73C7A2009B9DED /* CDAKQRDAHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDAKQRDAHeader.swift; sourceTree = "<group>"; };
 		384E23231C73C7CE009B9DED /* CDAKQRDALegalAuthenticator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDAKQRDALegalAuthenticator.swift; sourceTree = "<group>"; };
-		384E23251C73C7DB009B9DED /* CDAKQRDAOrganization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDAKQRDAOrganization.swift; sourceTree = "<group>"; };
-		384E23271C73C7E5009B9DED /* CDAKQRDAPerson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDAKQRDAPerson.swift; sourceTree = "<group>"; };
 		384E23291C73CC96009B9DED /* CDAKConfidentialityCodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDAKConfidentialityCodes.swift; sourceTree = "<group>"; };
 		384E232C1C73CD22009B9DED /* cat1_header.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cat1_header.swift; sourceTree = "<group>"; };
 		384E232E1C73D89B009B9DED /* CDAKQRDAHeaderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDAKQRDAHeaderTest.swift; sourceTree = "<group>"; };
@@ -368,11 +357,6 @@
 		389170421C6CC1EE00A31299 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3891705E1C6CD74500A31299 /* CDAKitDefaultHealthKitTermMap.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CDAKitDefaultHealthKitTermMap.plist; sourceTree = "<group>"; };
 		3891705F1C6CD74500A31299 /* CDAKitHealthKitBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDAKitHealthKitBridge.swift; sourceTree = "<group>"; };
-		389170621C6CD7A500A31299 /* author.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = author.swift; sourceTree = "<group>"; };
-		389170631C6CD7A500A31299 /* base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = base.swift; sourceTree = "<group>"; };
-		389170641C6CD7A500A31299 /* change_info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = change_info.swift; sourceTree = "<group>"; };
-		389170651C6CD7A500A31299 /* link_info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = link_info.swift; sourceTree = "<group>"; };
-		389170661C6CD7A500A31299 /* pedigree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pedigree.swift; sourceTree = "<group>"; };
 		3891706C1C6CD7C800A31299 /* address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = address.swift; sourceTree = "<group>"; };
 		3891706D1C6CD7C800A31299 /* allergy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = allergy.swift; sourceTree = "<group>"; };
 		3891706E1C6CD7C800A31299 /* care_goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = care_goal.swift; sourceTree = "<group>"; };
@@ -417,7 +401,6 @@
 		389170BE1C6CD7FF00A31299 /* code_system_helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = code_system_helper.swift; sourceTree = "<group>"; };
 		389170BF1C6CD7FF00A31299 /* hl7_helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hl7_helper.swift; sourceTree = "<group>"; };
 		389170C21C6CD81900A31299 /* HDSExport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HDSExport.swift; sourceTree = "<group>"; };
-		389170C31C6CD81900A31299 /* template_helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = template_helper.swift; sourceTree = "<group>"; };
 		389170C41C6CD81900A31299 /* view_helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = view_helper.swift; sourceTree = "<group>"; };
 		389170C81C6CD83700A31299 /* c32_care_goal_importer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = c32_care_goal_importer.swift; sourceTree = "<group>"; };
 		389170C91C6CD83700A31299 /* c32_condition_importer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = c32_condition_importer.swift; sourceTree = "<group>"; };
@@ -461,7 +444,6 @@
 		389171101C6CD8A500A31299 /* Mustache+Filters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Mustache+Filters.swift"; sourceTree = "<group>"; };
 		389171111C6CD8A500A31299 /* NSDate+Formatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Formatters.swift"; sourceTree = "<group>"; };
 		389171121C6CD8A500A31299 /* NSObject+PropertyNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+PropertyNames.swift"; sourceTree = "<group>"; };
-		389171131C6CD8A500A31299 /* String+CryptoExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+CryptoExtensions.swift"; sourceTree = "<group>"; };
 		389171141C6CD8A500A31299 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		389171151C6CD8A500A31299 /* CDAKCommonUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDAKCommonUtility.swift; sourceTree = "<group>"; };
 		389171221C6CD8BA00A31299 /* c32_allergies_no_current.c32.mustache */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = c32_allergies_no_current.c32.mustache; sourceTree = "<group>"; };
@@ -681,17 +663,8 @@
 				3891710C1C6CD8A500A31299 /* Dictionary+Extensions.swift */,
 				389171121C6CD8A500A31299 /* NSObject+PropertyNames.swift */,
 				389171141C6CD8A500A31299 /* String+Extensions.swift */,
-				389171131C6CD8A500A31299 /* String+CryptoExtensions.swift */,
 			);
 			name = extensions;
-			sourceTree = "<group>";
-		};
-		384E23151C73C061009B9DED /* hdata */ = {
-			isa = PBXGroup;
-			children = (
-				384E23161C73C517009B9DED /* MetadataImporter.swift */,
-			);
-			path = hdata;
 			sourceTree = "<group>";
 		};
 		384E23181C73C724009B9DED /* qrda */ = {
@@ -701,10 +674,7 @@
 				384E231B1C73C77F009B9DED /* CDAKQRDACustodian.swift */,
 				384E231F1C73C797009B9DED /* CDAKQRDADevice.swift */,
 				384E23211C73C7A2009B9DED /* CDAKQRDAHeader.swift */,
-				384E23191C73C764009B9DED /* CDAKQRDAId.swift */,
 				384E23231C73C7CE009B9DED /* CDAKQRDALegalAuthenticator.swift */,
-				384E23251C73C7DB009B9DED /* CDAKQRDAOrganization.swift */,
-				384E23271C73C7E5009B9DED /* CDAKQRDAPerson.swift */,
 			);
 			path = qrda;
 			sourceTree = "<group>";
@@ -932,7 +902,6 @@
 				3891705D1C6CD5EB00A31299 /* c32 */,
 				3891705C1C6CD5E700A31299 /* cda */,
 				3891705B1C6CD5E300A31299 /* ccda */,
-				384E23151C73C061009B9DED /* hdata */,
 			);
 			path = import;
 			sourceTree = "<group>";
@@ -941,7 +910,6 @@
 			isa = PBXGroup;
 			children = (
 				389170C21C6CD81900A31299 /* HDSExport.swift */,
-				389170C31C6CD81900A31299 /* template_helper.swift */,
 				389170C41C6CD81900A31299 /* view_helper.swift */,
 			);
 			path = export;
@@ -1012,11 +980,6 @@
 		3891705A1C6CD5BA00A31299 /* metadata */ = {
 			isa = PBXGroup;
 			children = (
-				389170621C6CD7A500A31299 /* author.swift */,
-				389170631C6CD7A500A31299 /* base.swift */,
-				389170641C6CD7A500A31299 /* change_info.swift */,
-				389170651C6CD7A500A31299 /* link_info.swift */,
-				389170661C6CD7A500A31299 /* pedigree.swift */,
 				384E23291C73CC96009B9DED /* CDAKConfidentialityCodes.swift */,
 			);
 			path = metadata;
@@ -1493,6 +1456,8 @@
 				389171401C6CD8BA00A31299 /* c32_results.c32.mustache in Resources */,
 				389171671C6CD8D200A31299 /* ccda_show.ccda.mustache in Resources */,
 				38359E0B1C7B774400CCC036 /* LICENSE.txt in Resources */,
+				659F39AB11779C6D83C9DF1D /* README.md in Resources */,
+				659F341653311C0883C5C6AB /* release-notes.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1581,6 +1546,8 @@
 				389172F01C6CFD9100A31299 /* medication_dispensed_fragment.xml in Resources */,
 				389172961C6CF1F200A31299 /* 4dcbecdb431a5f5878000004.json in Resources */,
 				389172F71C6CFD9100A31299 /* procedure_performed_fragment.xml in Resources */,
+				659F398E97205B5AC53A6C40 /* README.md in Resources */,
+				659F3792B998D2E0D92AFD80 /* release-notes.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1675,11 +1642,9 @@
 				389170D11C6CD83700A31299 /* c32_patient_importer.swift in Sources */,
 				3891711E1C6CD8A500A31299 /* NSObject+PropertyNames.swift in Sources */,
 				389170E71C6CD86D00A31299 /* cda_entry_finder.swift in Sources */,
-				389170681C6CD7A500A31299 /* base.swift in Sources */,
 				389170C11C6CD7FF00A31299 /* hl7_helper.swift in Sources */,
 				389170BA1C6CD7C800A31299 /* thing_with_times.swift in Sources */,
 				389170B71C6CD7C800A31299 /* support.swift in Sources */,
-				3891706B1C6CD7A500A31299 /* pedigree.swift in Sources */,
 				389171181C6CD8A500A31299 /* Dictionary+Extensions.swift in Sources */,
 				389170B91C6CD7C800A31299 /* thing_with_codes.swift in Sources */,
 				389170F11C6CD86D00A31299 /* cda_vital_sign_importer.swift in Sources */,
@@ -1706,7 +1671,6 @@
 				389170A71C6CD7C800A31299 /* medical_equipment.swift in Sources */,
 				389170B21C6CD7C800A31299 /* reason.swift in Sources */,
 				389170AE1C6CD7C800A31299 /* procedure.swift in Sources */,
-				384E23171C73C517009B9DED /* MetadataImporter.swift in Sources */,
 				389170AA1C6CD7C800A31299 /* organization.swift in Sources */,
 				38BC98151C7C9F5600E8F2F4 /* README.md in Sources */,
 				389170B11C6CD7C800A31299 /* provider.swift in Sources */,
@@ -1720,7 +1684,6 @@
 				389170A61C6CD7C800A31299 /* lab_result.swift in Sources */,
 				389170B61C6CD7C800A31299 /* social_history.swift in Sources */,
 				3891709A1C6CD7C800A31299 /* communication.swift in Sources */,
-				384E23281C73C7E5009B9DED /* CDAKQRDAPerson.swift in Sources */,
 				389171161C6CD8A500A31299 /* Array+Utility.swift in Sources */,
 				3891711C1C6CD8A500A31299 /* Mustache+Filters.swift in Sources */,
 				389170EB1C6CD86D00A31299 /* cda_narrative_reference_handler.swift in Sources */,
@@ -1740,13 +1703,10 @@
 				389170C51C6CD81900A31299 /* HDSExport.swift in Sources */,
 				384E23241C73C7CE009B9DED /* CDAKQRDALegalAuthenticator.swift in Sources */,
 				389170A11C6CD7C800A31299 /* fulfillment_history.swift in Sources */,
-				389170C61C6CD81900A31299 /* template_helper.swift in Sources */,
 				384E231C1C73C77F009B9DED /* CDAKQRDACustodian.swift in Sources */,
 				389170AD1C6CD7C800A31299 /* physical_quantity_result_value.swift in Sources */,
 				389171011C6CD88A00A31299 /* ccda_encounter_importer.swift in Sources */,
 				389170971C6CD7C800A31299 /* care_goal.swift in Sources */,
-				384E231A1C73C764009B9DED /* CDAKQRDAId.swift in Sources */,
-				384E23261C73C7DB009B9DED /* CDAKQRDAOrganization.swift in Sources */,
 				384E232D1C73CD22009B9DED /* cat1_header.swift in Sources */,
 				389170E51C6CD86D00A31299 /* cda_condition_importer.swift in Sources */,
 				389170D01C6CD83700A31299 /* c32_insurance_provider_importer.swift in Sources */,
@@ -1756,21 +1716,18 @@
 				384E232A1C73CC96009B9DED /* CDAKConfidentialityCodes.swift in Sources */,
 				389171081C6CD88A00A31299 /* ccda_result_importer.swift in Sources */,
 				389170EA1C6CD86D00A31299 /* cda_medication_importer.swift in Sources */,
-				389170671C6CD7A500A31299 /* author.swift in Sources */,
 				389171051C6CD88A00A31299 /* ccda_social_history_importer.swift in Sources */,
 				3852E3031C86188800F1B57D /* release-notes.md in Sources */,
 				3852E30B1C864BC400F1B57D /* thing_with_identifier.swift in Sources */,
 				38BE32B81C80F5EB002AEC25 /* cda_social_history_importer.swift in Sources */,
 				389170C01C6CD7FF00A31299 /* code_system_helper.swift in Sources */,
 				389170ED1C6CD86D00A31299 /* cda_procedure_importer.swift in Sources */,
-				3891711F1C6CD8A500A31299 /* String+CryptoExtensions.swift in Sources */,
 				389171031C6CD88A00A31299 /* ccda_insurance_provider_importer.swift in Sources */,
 				389170B31C6CD7C800A31299 /* record.swift in Sources */,
 				389170E41C6CD86D00A31299 /* cda_allergy_importer.swift in Sources */,
 				389170A81C6CD7C800A31299 /* medication.swift in Sources */,
 				389170611C6CD74500A31299 /* CDAKitHealthKitBridge.swift in Sources */,
 				389170C71C6CD81900A31299 /* view_helper.swift in Sources */,
-				389170691C6CD7A500A31299 /* change_info.swift in Sources */,
 				380A41091C77AECF00E5D7B8 /* CDAKVocabularyStructs.swift in Sources */,
 				389170A91C6CD7C800A31299 /* order_information.swift in Sources */,
 				3891709D1C6CD7C800A31299 /* encounter.swift in Sources */,
@@ -1782,7 +1739,6 @@
 				389171001C6CD88A00A31299 /* ccda_condition_importer.swift in Sources */,
 				389170A21C6CD7C800A31299 /* functional_status.swift in Sources */,
 				389170B01C6CD7C800A31299 /* provider_preference.swift in Sources */,
-				3891706A1C6CD7A500A31299 /* link_info.swift in Sources */,
 				389170CF1C6CD83700A31299 /* c32_immunization_importer.swift in Sources */,
 				389171171C6CD8A500A31299 /* CDAKCodedEntries.swift in Sources */,
 				389170CE1C6CD83700A31299 /* c32_condition_importer.swift in Sources */,
@@ -1863,6 +1819,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1913,6 +1870,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1987,7 +1945,8 @@
 			baseConfigurationReference = B3721CB6B043AD64FC0ED757 /* Pods-CDAKitTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = E22XJ7D3WH;
+				CODE_SIGN_IDENTITY = "";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = CDAKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ericwhitley.org.CDAKitTests;
@@ -2001,9 +1960,11 @@
 			baseConfigurationReference = 3584B78321E453821B9F825B /* Pods-CDAKitTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = E22XJ7D3WH;
+				CODE_SIGN_IDENTITY = "";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = CDAKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ericwhitley.org.CDAKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;

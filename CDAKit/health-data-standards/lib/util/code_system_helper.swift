@@ -19,10 +19,24 @@ open class CDAKCodeSystemHelper {
    EX:     "2.16.840.1.113883.6.1" :    "LOINC"
   */
   static let CODE_SYSTEMS: [String:String] = [
+    // Swedish code systems
+    "1.2.752.116.1.1.1.1.3" :   "ICD-10-SE",
+    "1.2.752.116.2.1.1"     :   "SNOMED-CT-SE",
+    "1.2.752.129.2.1.4.1"     :   "HSA-ID",
+    "1.2.752.129.2.1.3.1"     :   "Personnummer",
+    "1.2.752.129.2.1.3.3"     :   "Samordningsnummer",
+    "1.2.752.97.3.1.3"     :   "SLL-Reservnummer",
+
+    "1.2.752.129.2.2.3.1.1"     :   "ATC SKL",
+    "2.16.840.1.113883.6.73"     :   "ATC",
+    "1.2.752.129.2.1.5.1"     :   "NPL-id",
+    "1.2.752.129.2.1.5.2"     :   "NPL-pack-id",
+
+
+
     "2.16.840.1.113883.6.1" :    "LOINC",
     "2.16.840.1.113883.6.96" :   "SNOMED-CT",
     "2.16.840.1.113883.6.12" :   "CPT",
-    //"2.16.840.1.113883.3.88.12.80.32" : "CPT", //# CDAKEncounter Type from C32, a subset of CPT
     "2.16.840.1.113883.6.88" :   "RxNorm",
     "2.16.840.1.113883.6.103" :  "ICD-9-CM",
     "2.16.840.1.113883.6.104" :  "ICD-9-PCS",
@@ -72,8 +86,7 @@ open class CDAKCodeSystemHelper {
     "Race & Ethnicity - CDC": "CDC Race"
   ]
   
-  /// Some old OID are still around in data, this hash maps retired OID values to
-  /// the new value
+  /// Some old OID are still around in data, this hash maps retired OID values to the new value
   open static let OID_ALIASES: [String:String] = [
     "2.16.840.1.113883.6.59" : "2.16.840.1.113883.12.292" //# CVX
   ]
@@ -109,9 +122,7 @@ open class CDAKCodeSystemHelper {
       return sys
     }
     
-    return "UNK" // unknown
-    //CODE_SYSTEMS.invert[code_system]
-		//swap value for key  
+    return "UNK"
   }
   
   /// Returns the whole map of OIDs to code systems
