@@ -2,19 +2,15 @@
   {{#each(authors)}}
     {{>cat1_author.cat1 }}
   {{/}}
-  <!-- SHALL have 1..* author. MAY be device or person.
-  The author of the CDA document in this example is a device at a data submission vendor/registry. -->
-
-  <!-- The custodian of the CDA document is the same as the legal authenticator in this
-  example and represents the reporting organization. -->
+  <!-- SHALL have 1..* author. MAY be device or person. The author of the CDA document in this example is a device at a data submission vendor/registry. -->
+  <!-- The custodian of the CDA document is the same as the legal authenticator in this example and represents the reporting organization. -->
   <!-- SHALL -->
   <custodian>
     <assignedCustodian>
   {{#custodian.organization}}<representedCustodianOrganization>{{>cat1_organization.cat1 }}</representedCustodianOrganization>{{/custodian.organization}}
     </assignedCustodian>
   </custodian>
-  <!-- The legal authenticator of the CDA document is a single person who is at the
-  same organization as the custodian in this example. This element must be present. -->
+  <!-- The legal authenticator of the CDA document is a single person who is at the same organization as the custodian in this example. This element must be present. -->
   <!-- SHALL -->
   <legalAuthenticator>
   <!-- SHALL -->

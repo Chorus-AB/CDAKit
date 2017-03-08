@@ -17,6 +17,8 @@ open class CDAKQRDAAuthor {
   open var person: CDAKPerson?
   open var device: CDAKQRDADevice?
   open var organization: CDAKOrganization?
+
+  public init() { }
 }
 
 extension CDAKQRDAAuthor: CustomStringConvertible {

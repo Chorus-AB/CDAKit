@@ -7,11 +7,12 @@
 //
 
 import Foundation
+import Mustache
 
 /**
 Represents a physical address
 */
-open class CDAKAddress: NSObject, CDAKJSONInstantiable {
+open class CDAKAddress: CDAKJSONInstantiable {
   
   //Pointer back to parent record
   weak var record: CDAKRecord?
@@ -49,12 +50,9 @@ open class CDAKAddress: NSObject, CDAKJSONInstantiable {
   }
   
   // MARK: - Initializers
-  public override init(){
-    super.init()
-  }
+  public init(){}
   
   public init(street:[String] = [], city: String?, state: String?, zip: String?, country: String?, use: String?) {
-    super.init()
     self.street = street
     self.city = city
     self.state = state
@@ -62,14 +60,13 @@ open class CDAKAddress: NSObject, CDAKJSONInstantiable {
     self.country = country
     self.use = use
   }
-  
+
   // MARK: - Deprecated - Do not use
   ///Do not use - will be removed. Was used in HDS Ruby.
   required public init(event: [String:Any?]) {
-    super.init()
     initFromEventList(event)
   }
-  
+
   ///Do not use - will be removed. Was used in HDS Ruby.
   fileprivate func initFromEventList(_ event: [String:Any?]) {
     for (key, value) in event {
@@ -79,10 +76,24 @@ open class CDAKAddress: NSObject, CDAKJSONInstantiable {
 
   // MARK: Standard properties
   ///Debugging description
-  override open var description: String {
+  open var description: String {
     return "CDAKAddress => street: \(street), city: \(city), state: \(state), zip: \(zip), country: \(country), use: \(use)"
   }
   
+}
+
+extension CDAKAddress: MustacheBoxable {
+  public var mustacheBox: MustacheBox {
+    return Box([
+            "street": street,
+            "city": city,
+            "state": state,
+            "zip": zip,
+            "country": country,
+            "use": use,
+            "is_empty": is_empty
+    ])
+  }
 }
 
 extension CDAKAddress: CDAKJSONExportable {
@@ -108,6 +119,7 @@ extension CDAKAddress: CDAKJSONExportable {
     if let use = use {
       dict["use"] = use as AnyObject?
     }
+    dict["is_empty"] = is_empty as AnyObject?
     return dict
   }
 }

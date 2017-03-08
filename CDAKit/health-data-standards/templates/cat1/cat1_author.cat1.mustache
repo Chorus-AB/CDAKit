@@ -1,5 +1,4 @@
-<!-- SHALL have 1..* author. MAY be device or person.
-The author of the CDA document in this example is a device at a data submission vendor/registry. -->
+<!-- SHALL have 1..* author. MAY be device or person. The author of the CDA document in this example is a device at a data submission vendor/registry. -->
 <author>
 <time value="{{ date_as_number(time) }}"/>
 <assignedAuthor>
@@ -23,6 +22,6 @@ The author of the CDA document in this example is a device at a data submission 
     <softwareName>{{device.name}}</softwareName>
   </assignedAuthoringDevice>
 {{/device}}
-{{#each(organization)}}<representedOrganization>{{>cat1_organization.cat1 }}</representedOrganization>{{/}}
+{{#organization}}<representedOrganization>{{>cat1_organization.cat1 }}</representedOrganization>{{/organization}}
 </assignedAuthor>
 </author>

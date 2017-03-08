@@ -16,6 +16,16 @@ open class CDAKQRDALegalAuthenticator {
   open var addresses: [CDAKAddress] = []
   open var person: CDAKPerson?
   open var organization: CDAKOrganization?
+  public init() {}
+  public init(_ author:CDAKQRDAAuthor?) {
+    if let author:CDAKQRDAAuthor = author {
+      self.telecoms = author.telecoms;
+      self.ids = author.ids;
+      self.addresses = author.addresses;
+      self.person = author.person;
+      self.organization = author.organization;
+    }
+  }
 }
 
 extension CDAKQRDALegalAuthenticator: CustomStringConvertible {

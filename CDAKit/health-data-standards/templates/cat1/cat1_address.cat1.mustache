@@ -1,9 +1,10 @@
-<addr {{#use}}use="{{.}}"{{/use}}>
-{{#street}}
-<streetAddressLine>{{.}}</streetAddressLine>
-{{/street}}
-<city>{{city}}</city>
-<state>{{state}}</state>
-<postalCode>{{zip}}</postalCode>
-<country>{{country}}</country>
-</addr>
+{{^is_empty}}
+    <addr {{#use}}use="{{.}}"{{/use}}>
+        {{#street}}<streetAddressLine>{{.}}</streetAddressLine>
+        {{/street}}
+        {{#city}}<city>{{.}}</city>{{/city}}
+        {{#state}}<state>{{.}}</state>{{/state}}
+        {{#zip}}<postalCode>{{.}}</postalCode>{{/zip}}
+        {{#country}}<country>{{country}}</country>{{/country}}
+    </addr>
+{{/is_empty}}

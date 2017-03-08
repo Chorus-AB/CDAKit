@@ -13,6 +13,12 @@ open class CDAKQRDACustodian {
   open var ids: [CDAKCDAIdentifier] = []
   open var person: CDAKPerson? //I see no cases where this is used in CDA
   open var organization: CDAKOrganization?
+
+  public init() {}
+  public init(_ person:CDAKPerson?, organization: CDAKOrganization?) {
+    self.organization = organization
+    self.person = person;
+  }
 }
 
 extension CDAKQRDACustodian: CustomStringConvertible {
