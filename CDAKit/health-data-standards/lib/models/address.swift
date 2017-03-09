@@ -86,12 +86,12 @@ extension CDAKAddress: MustacheBoxable {
   public var mustacheBox: MustacheBox {
     return Box([
             "street": street,
-            "city": city,
-            "state": state,
-            "zip": zip,
-            "country": country,
-            "use": use,
-            "is_empty": is_empty
+            "city": city as Any,
+            "state": state as Any,
+            "zip": zip as Any,
+            "country": country as Any,
+            "use": use as Any,
+            "is_empty": is_empty as Any
     ])
   }
 }

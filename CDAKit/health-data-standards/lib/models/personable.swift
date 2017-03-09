@@ -11,7 +11,7 @@ import Foundation
 /**
 Defines basic "person-like" attributes shared by Person and Provider objects
 */
-protocol CDAKPersonable {
+public protocol CDAKPersonable {
   // MARK: CDA properties
   
   ///prefix (was: title)
