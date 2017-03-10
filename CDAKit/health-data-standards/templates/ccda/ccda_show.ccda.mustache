@@ -75,13 +75,22 @@
     {{#patient.allergies}}
       {{>ccda_allergies.ccda}}
     {{/patient.allergies}}
+    {{^patient.allergies}}
+      {{>ccda_allergies_no_current.ccda }}
+    {{/patient.allergies}}
 
     {{#patient.medications}}
       {{>ccda_medications.ccda }}
     {{/patient.medications}}
+    {{^patient.medications}}
+      {{>ccda_medications_no_current.ccda }}
+    {{/patient.medications}}
 
     {{#patient.results}}
       {{>ccda_results.ccda }}
+    {{/patient.results}}
+    {{^patient.results}}
+        {{>ccda_results_no_current.ccda }}
     {{/patient.results}}
 
     {{#patient.conditions}}
