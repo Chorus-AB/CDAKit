@@ -43,7 +43,7 @@ open class CDAKPerson: CDAKPersonable, CDAKJSONInstantiable {
   required public init(event: [String:Any?]) {
     initFromEventList(event)
   }
-  
+
 }
 
 extension CDAKPerson: MustacheBoxable {
@@ -55,7 +55,8 @@ extension CDAKPerson: MustacheBoxable {
       "prefix" :  Box(prefix),
       "given_name" :  Box(given_name),
       "family_name" :  Box(family_name),
-      "suffix" :  Box(suffix)
+      "suffix" :  Box(suffix),
+      "has_name" : Box(has_name)
     ]
     
     if addresses.count > 0 {
@@ -96,6 +97,7 @@ extension CDAKPerson: CDAKJSONExportable {
     if addresses.count > 0 {
       dict["addresses"] = addresses.map({$0.jsonDict}) as AnyObject?
     }
+    dict["has_name"] = has_name as AnyObject?
     return dict
   }
 }

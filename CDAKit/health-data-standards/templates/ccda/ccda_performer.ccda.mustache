@@ -10,22 +10,24 @@
     {{#code}}<code code="{{ code }}" codeSystem="{{ codeSystemOID }}" codeSystemName="{{ codeSystem }}" {{#displayName}}displayName="{{ . }}"{{/displayName}}/>{{/code}}
     {{#each(addresses)}}
     <addr {{#use}}use="{{.}}"{{/use}}>
-      {{#street}}<streetAddressLine>{{.}}</streetAddressLine>{{/street}}
-      <city>{{city}}</city>
-      <state>{{state}}</state>
-      <postalCode>{{zip}}</postalCode>
-      <country>{{country}}</country>
+        {{#street}}<streetAddressLine>{{.}}</streetAddressLine>{{/street}}
+        {{#city}}<city>{{.}}</city>{{/city}}
+        {{#state}}<state>{{.}}</state>{{/state}}
+        {{#postalCode}}<postalCode>{{.}}</postalCode>{{/postalCode}}
+        {{#country}}<country>{{.}}</country>{{/country}}
     </addr>{{/}}
-    {{#addresses}}<addr/>{{/addresses}}
-    {{^telecoms}}<telecom/>{{/telecoms}}
+    {{^addresses}}<addr/>{{/addresses}}
     {{#each(telecoms)}}<telecom value="{{value}}" use="{{use}}" />{{/}}
+    {{^telecoms}}<telecom/>{{/telecoms}}
     <assignedPerson>
-    <name>
-      {{#prefix }}<given>{{ . }}</given>{{/prefix }}
-      <given>{{given_name}}</given>
-      <family>{{family_name}}</family>
-      {{#suffix}}<suffix>{{.}}</suffix>{{/suffix}}
-    </name>
+    {{#has_name}}
+        <name>
+          {{#prefix }}<given>{{ . }}</given>{{/prefix }}
+          <given>{{given_name}}</given>
+          <family>{{family_name}}</family>
+          {{#suffix}}<suffix>{{.}}</suffix>{{/suffix}}
+        </name>
+    {{/has_name}}
     </assignedPerson>
     {{#organization}}
     <representedOrganization>

@@ -17,14 +17,13 @@
       {{^patient.identifiers}}<id root="Cypress" extension="{{ patient.id }}"/>{{/patient.identifiers}}
       {{#each(patient.identifiers)}}{{>cat1_id.cat1 }}{{/}}
       {{#patient.addresses }}
-      <addr {{#use }}use="{{use}}"{{/use}}>
-        {{#street }}
-        <streetAddressLine>{{ . }}</streetAddressLine>
+      <addr{{#use }} use="{{.}}"{{/use}}>
+        {{#street }}<streetAddressLine>{{ . }}</streetAddressLine>
         {{/street }}
-        <city>{{ city }}</city>
-        <state>{{ state }}</state>
-        <postalCode>{{ zip }}</postalCode>
-        <country>{{ country }}</country>
+        {{#city }}<city>{{ . }}</city>{{/city }}
+        {{#state }}<state>{{ . }}</state>{{/state }}
+        {{#zip }}<postalCode>{{ . }}</postalCode>{{/zip }}
+        {{#country }}<country>{{ . }}</country>{{/country }}
       </addr>
       {{/patient.addresses }}
       {{# patient.telecoms }}
@@ -32,10 +31,10 @@
       {{/patient.telecoms }}
       <patient>
         <name>
-          {{#patient.prefix }}<given>{{ . }}</given>{{/patient.prefix }}
-          <given>{{ patient.first }}</given>
-          <family>{{ patient.last }}</family>
-          {{#patient.suffix }}<given>{{ . }}</given>{{/patient.suffix }}
+            <family>{{ patient.last }}</family>
+            <given>{{ patient.first }}</given>
+            {{#patient.prefix }}<prefix>{{ . }}</prefix>{{/patient.prefix }}
+            {{#patient.suffix }}<suffix>{{ . }}</suffix>{{/patient.suffix }}
         </name>
         {{#patient.gender}}
         <administrativeGenderCode code="{{ patient.gender }}" codeSystem="2.16.840.1.113883.5.1" codeSystemName="HL7 AdministrativeGender"/>

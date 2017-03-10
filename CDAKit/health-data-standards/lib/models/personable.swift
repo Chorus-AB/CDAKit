@@ -29,3 +29,10 @@ public protocol CDAKPersonable {
   var telecoms: [CDAKTelecom] {get set}
   
 }
+
+extension CDAKPersonable {
+  public var has_name: Bool {
+    let name: String = "\(prefix ?? "")\(given_name ?? "")\(family_name ?? "")\(suffix ?? "")".trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+    return ( name.characters.count > 0 );
+  }
+}

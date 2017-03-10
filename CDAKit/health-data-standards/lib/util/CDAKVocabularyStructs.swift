@@ -21,15 +21,23 @@ public struct CDAKVocabularyKeys {
   public static let ICD10SE = "ICD-10-SE"
   // HSA-ID. Id for objects in the HSA-catalogue. https://www.inera.se/TJANSTER--PROJEKT/HSA/
   public static let HSAID = "HSA-ID"
+
   // Swedish social security number formats
   public static let PNR = "Personnummer"  // http://www.skatteverket.se/
   public static let SAMORDNR = "Samordningsnummer"  // http://www.skatteverket.se/
   public static let SLLRESERVNR = "SLL-Reservnummer" // SLL HSF
+
+  public static let KV_BEFATTNING = "KV Befattning" // Förvaltas av HSA förvaltningsgrupp, Inera. http://www.inera.se/Documents/TJANSTER_PROJEKT/Katalogtjanst_HSA/Innehall/hsa_innehall_befattning_version_3_2_2013-10-22.pdf
+
+
   // Swedish pharmaceuticals
   public static let ATC = "ATC"  // Classification of medicines http://www.whocc.no/atcddd/
   public static let ATCSKL = "ATC SKL"  // Classification of medicines http://www.lakemedelsverket.se/
   public static let NPL = "NPL-id"  // NPL-id describes a medicine from a given producer with a given preparation, dosage and taste. http://www.lakemedelsverket.se/
   public static let NPLPACK = "NPL-pack-id"  // NPL-pack-id describes in addition to NPL-id, also packaging size. http://www.lakemedelsverket.se/
+
+  public static let HL7ENCOUNTER_STATE = "HL7 EncounterState"  // http://hl7.org/fhir/encounter-state
+
 
 
   /// Logical Observation Identifiers Names and Codes. Created and managed by the Regenstrief Institute, Inc.

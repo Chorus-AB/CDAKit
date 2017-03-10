@@ -280,6 +280,7 @@ extension CDAKProvider: MustacheBoxable {
       "given_name" :  Box(given_name),
       "family_name" :  Box(family_name),
       "suffix" :  Box(suffix),
+      "has_name" : Box(has_name),
       "specialty" :  Box(specialty),
       "phone" :  Box(phone),
       "organization" :  Box(organization),
@@ -346,6 +347,8 @@ extension CDAKProvider: CDAKJSONExportable {
     if let code = code {
       dict["code"] = code.jsonDict as AnyObject?
     }
+
+    dict["has_name"] = has_name as AnyObject?
 
     return dict
   }
