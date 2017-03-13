@@ -295,6 +295,7 @@
 		38FCF8D81C74F8DA0040979E /* cat1_telecom.cat1.mustache in Resources */ = {isa = PBXBuildFile; fileRef = 38FCF8D71C74F8DA0040979E /* cat1_telecom.cat1.mustache */; };
 		38FCF8DA1C7503750040979E /* cat1_header.cat1.mustache in Resources */ = {isa = PBXBuildFile; fileRef = 38FCF8D91C7503750040979E /* cat1_header.cat1.mustache */; };
 		38FCF8DC1C75039A0040979E /* cat1_header_no_header.cat1.mustache in Resources */ = {isa = PBXBuildFile; fileRef = 38FCF8DB1C75039A0040979E /* cat1_header_no_header.cat1.mustache */; };
+		659F3175E85D9915C7034475 /* ccda_immunizations_narrative_block.ccda.mustache in Resources */ = {isa = PBXBuildFile; fileRef = 659F3A2122AE8D89F6472D39 /* ccda_immunizations_narrative_block.ccda.mustache */; };
 		659F341653311C0883C5C6AB /* release-notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 3852E3021C86188800F1B57D /* release-notes.md */; };
 		659F3792B998D2E0D92AFD80 /* release-notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 3852E3021C86188800F1B57D /* release-notes.md */; };
 		659F398E97205B5AC53A6C40 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 38BC98141C7C9F5600E8F2F4 /* README.md */; };
@@ -611,6 +612,7 @@
 		38FCF8D91C7503750040979E /* cat1_header.cat1.mustache */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cat1_header.cat1.mustache; sourceTree = "<group>"; };
 		38FCF8DB1C75039A0040979E /* cat1_header_no_header.cat1.mustache */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cat1_header_no_header.cat1.mustache; sourceTree = "<group>"; };
 		5440B6F09B325B25FC518484 /* Pods-CDAKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CDAKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-CDAKit/Pods-CDAKit.release.xcconfig"; sourceTree = "<group>"; };
+		659F3A2122AE8D89F6472D39 /* ccda_immunizations_narrative_block.ccda.mustache */ = {isa = PBXFileReference; lastKnownFileType = file.mustache; path = ccda_immunizations_narrative_block.ccda.mustache; sourceTree = "<group>"; };
 		7FDAC72237DF962DB8F4084C /* Pods_CDAKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CDAKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3721CB6B043AD64FC0ED757 /* Pods-CDAKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CDAKitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CDAKitTests/Pods-CDAKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E4B275D491AE4CABC47FF7B2 /* Pods-CDAKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CDAKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CDAKit/Pods-CDAKit.debug.xcconfig"; sourceTree = "<group>"; };
@@ -831,6 +833,7 @@
 				389171551C6CD8D200A31299 /* ccda_social_history.ccda.mustache */,
 				3852E2FC1C8472B700F1B57D /* ccda_values.ccda.mustache */,
 				389171561C6CD8D200A31299 /* ccda_vital_signs.ccda.mustache */,
+				659F3A2122AE8D89F6472D39 /* ccda_immunizations_narrative_block.ccda.mustache */,
 			);
 			path = ccda;
 			sourceTree = "<group>";
@@ -1456,6 +1459,7 @@
 				38359E0B1C7B774400CCC036 /* LICENSE.txt in Resources */,
 				659F39AB11779C6D83C9DF1D /* README.md in Resources */,
 				659F341653311C0883C5C6AB /* release-notes.md in Resources */,
+				659F3175E85D9915C7034475 /* ccda_immunizations_narrative_block.ccda.mustache in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,22 @@
+<text>
+    <content ID="immunSect"/>
+    <table width="100%">
+        <thead>
+        <tr>
+            <th>Vaccine</th>
+            <th>Series Number</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each(entries)}}
+        <tr ID="immun{{ @index }}">
+            <td>{{ medication_product.description }}</td>{{! <!-- TODO: Could be displayName for the code as well --> }}
+            <td>{{ series_number }}</td>
+            <td>{{ times_to_s }}</td>
+            <td>{{ status }}</td>
+        </tr>{{/}}
+        </tbody>
+    </table>
+</text>

@@ -1,36 +1,82 @@
-<component>
-  <!--Immunizations-->
-  <section>
-    <templateId root="2.16.840.1.113883.10.20.22.2.2" />
-    <!--Immunizations section template-->
-    <code code="11369-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of immunizations"/>
-    <title>Immunizations</title>
-    {{> ccda_narrative_block.ccda }}
-    {{#each(entries)}}
-    <entry typeCode="DRIV">
-      <substanceAdministration classCode="SBADM" moodCode="EVN" negationInd="false">
-        <templateId root="2.16.840.1.113883.10.20.22.4.52"/>
-        <!-- Medication activity template -->
-        <id root="{{ UUID_generate(nil) }}"/>
-        <code code="IMMUNIZ" codeSystem="2.16.840.1.113883.5.4" codeSystemName="ActCode"/>
-        <text>
-          <reference value="#immunizations-desc-{{ @index }}"/>
-        </text>
-        <statusCode code="completed"/>
-        <effectiveTime {{{ value_or_null_flavor(as_point_in_time) }}}/>
-        <doseQuantity nullFlavor="UNK"/>
-        <consumable>
-          <manufacturedProduct classCode="MANU">
-            <templateId root="2.16.840.1.113883.10.20.22.4.54"/>
-            <!-- Product template -->
-            <manufacturedMaterial>
-              {{>ccda_code_with_reference.ccda}}
-              <name>{{ description }}</name>
-            </manufacturedMaterial>
-          </manufacturedProduct>
-        </consumable>
-      </substanceAdministration>
-    </entry>
-    {{/}}
-  </section>
+<component>{{!
+    <!--Immunizations-->
+    <!--
+    An Immunization Activity describes immunization substance administrations that have actually occurred or
+    are intended to occur. Immunization Activities in ""INT"" mood are reflections of immunizations a clinician
+    intends a patient to receive. Immunization Activities in ""EVN"" mood reflect immunizations actually received.
+    An Immunization Activity is very similar to a Medication Activity with some key differentiators. The drug code
+    system is constrained to CVX codes. Administration timing is less complex. Patient refusal reasons should be
+    captured. All vaccines administered should be fully documented in the patient's permanent medical record.
+    Healthcare providers who administer vaccines covered by the National Childhood Vaccine Injury Act are required
+    to ensure that the permanent medical record of the recipient indicates:
+        1) Date of administration
+        2) Vaccine manufacturer
+        3) Vaccine lot number
+        4) Name and title of the person who administered the vaccine and the address of the clinic or facility
+            where the permanent record will reside
+        5) Vaccine information statement (VIS)
+            a. date printed on the VIS
+            b. date VIS given to patient or parent/guardian.
+    This information should be included in an Immunization Activity when available.
+    http://ccda.art-decor.org/ccda-html-20150727T182455/tmp-2.16.840.1.113883.10.20.22.4.52-2013-01-31T000000.html
+    -->
+}}
+    <section>
+        <templateId root="2.16.840.1.113883.10.20.22.2.2" />
+        <!--Immunizations section template-->
+        <code code="11369-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of immunizations"/>
+
+        <title>Immunizations</title>
+        {{> ccda_immunizations_narrative_block.ccda }}
+        {{#each(entries)}}
+            <entry typeCode="DRIV">
+                <substanceAdministration classCode="SBADM" moodCode="EVN" negationInd="false">
+                    <templateId root="2.16.840.1.113883.10.20.22.4.52"/>
+                    <!-- Medication activity template -->
+                    {{#cda_identifier}}<id {{#root}}root="{{.}}"{{/root}} extension="{{extension}}"/>{{/cda_identifier}}
+                    {{^cda_identifier}}<id root="{{ UUID_generate(nil) }}"/>{{/cda_identifier}}
+
+                    <code code="IMMUNIZ" codeSystem="2.16.840.1.113883.5.4" codeSystemName="ActCode"/>
+
+                    <text>
+                        <reference value="#immun1{{ @index }}"/>
+                    </text>
+
+                    <statusCode code="completed"/>{{! <!-- TODO: Do I need to adjust this? -->}}
+                    <effectiveTime {{{ value_or_null_flavor(as_point_in_time) }}}/>
+
+                    {{#medication_product.route}}<routeCode code="{{ code }}" codeSystem="{{ codeSystemOid }}" codeSystemName="{{ codeSystem }}" {{#displayName}}displayName="{{ . }}"{{/displayName}}/>{{/medication_product.route}}
+                    {{^medication_product.route}}<routeCode nullFlavor="UNK"/>{{/medication_product.route}}
+
+                    {{#medication_product.anatomical_approach}}<approachSiteCode code="{{ code }}" codeSystem="{{ codeSystemOid }}" codeSystemName="{{ codeSystem }}" {{#displayName}}displayName="{{ . }}"{{/displayName}}/>{{/medication_product.anatomical_approach}}
+                    {{^medication_product.anatomical_approach}}<approachSiteCode nullFlavor="UNK"/>{{/medication_product.anatomical_approach}}
+
+                    {{#medication_product.dose}}<doseQuantity value="{{ value }}" {{#unit}}unit="{{ . }}"{{/unit}}/>{{/medication_product.dose}}
+                    {{^medication_product.dose}}<doseQuantity nullFlavor="UNK"/>{{/medication_product.dose}}
+
+                    <consumable>
+                        <manufacturedProduct classCode="MANU">
+                            <templateId root="2.16.840.1.113883.10.20.22.4.54"/>
+                            <!-- Product template -->
+                            {{#medication_product}}{{!<!-- Push to stack for CCDA_CODE -->}}
+                                <manufacturedMaterial>
+                                    {{>ccda_code_with_reference.ccda}}{{! <!-- TODO: Probably need to handle NPL-id's here -->
+                                    <!-- From doc: "The drug code system is constrained to CVX codes." TODO: Can I map this from NPL? Probably not.--> }}
+                                    <name>{{ medication_product.description }}</name> {{! <!-- TODO: Set or generate description? --> }}
+                                    <lotNumberText>{{series_number}}</lotNumberText>
+                                </manufacturedMaterial>
+                                {{#manufacturer_organization}}
+                                    <manufacturerOrganization>
+                                        <name>{{.}}</name>
+                                    </manufacturerOrganization>{{/manufacturer_organization}}
+                            {{/medication_product}}
+                        </manufacturedProduct>
+                    </consumable>
+                    {{>ccda_performer.ccda}}
+                    {{!<!-- { {>cat1_author.cat1} } TODO: Author here is not supported by the CDAKit model and since I don't need it I'm letting it be atm-->}}
+
+                </substanceAdministration>
+            </entry>
+        {{/}}
+    </section>
 </component>
