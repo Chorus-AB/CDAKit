@@ -30,6 +30,10 @@ class CDAKImport_CDA_MedicationImporter: CDAKImport_CDA_SectionImporter {
   var reaction_xpath = "./cda:entryRelationship[@typeCode='MFST']/cda:observation[cda:templateId/@root='2.16.840.1.113883.10.20.1.54']"
   var severity_xpath = "./cda:entryRelationship[@typeCode='SUBJ']/cda:observation[cda:templateId/@root='2.16.840.1.113883.10.20.1.55']"
 
+
+  // TODO: Maybe I could simplify this according to code_xpath and description_xpath?
+  var manufactured_product_xpath = "./cda:consumable/cda:manufacturedProduct[@classCode='MANU' and cda:templateId/@root='2.16.840.1.113883.10.20.22.4.54']"
+
   
   override init(entry_finder: CDAKImport_CDA_EntryFinder = CDAKImport_CDA_EntryFinder(entry_xpath: "//cda:section[cda:templateId/@root='2.16.840.1.113883.3.88.11.83.112']/cda:entry/cda:substanceAdministration")) {
     super.init(entry_finder: entry_finder)
@@ -63,10 +67,6 @@ class CDAKImport_CDA_MedicationImporter: CDAKImport_CDA_SectionImporter {
       if let type_of_med_xpath = type_of_med_xpath {
         medication.type_of_medication.addCodes(CDAKImport_CDA_SectionImporter.extract_code(entry_element, code_xpath: type_of_med_xpath, code_system: "SNOMED-CT"))
       }
-            
-//      if let indication_entry = extract_indication(entry_element, entry: medication, indication_xpath: indication_xpath) {
-//        medication.indication = indication_entry
-//      }
 
       medication.indication = extract_entry_detail(entry_element, xpath: indication_xpath)
       medication.indication?.codes.preferred_code_sets = ["SNOMED-CT"]
@@ -84,7 +84,9 @@ class CDAKImport_CDA_MedicationImporter: CDAKImport_CDA_SectionImporter {
       medication.severity = extract_entry_detail(entry_element, xpath: severity_xpath)
       medication.severity?.codes.preferred_code_sets = ["SNOMED-CT"]
 
-      
+      medication.material_name = extract_material_name(entry_element)
+      medication.manufacturer_organization = extract_manufacturer_organization(entry_element)
+
       medication.vehicle.addCodes(CDAKImport_CDA_SectionImporter.extract_code(entry_element, code_xpath: vehicle_xpath, code_system: "SNOMED-CT"))
       
       extract_order_information(entry_element, medication: medication)
@@ -148,13 +150,53 @@ class CDAKImport_CDA_MedicationImporter: CDAKImport_CDA_SectionImporter {
         switch inst {
         case "true": medication.administration_timing.institution_specified = true
         case "false": medication.administration_timing.institution_specified = false
-        default: print("CDA importer - extract_administration_timing() - institutionSpecified - found uknown value \(inst)")
+        default: print("CDA importer - extract_administration_timing() - institutionSpecified - found unknown value \(inst)")
         }
       }
       if let period = extract_scalar(administration_timing_element, scalar_xpath: "./cda:period") {
         medication.administration_timing.period = period
       }
     }
+  }
+
+  fileprivate func extract_manufacturer_organization(_ parent_element: XMLElement) -> String? {
+    if let manufactured_product_element = parent_element.xpath(manufactured_product_xpath).first {
+      return manufactured_product_element.xpath("./cda:manufacturerOrganization/cda:name").first?.stringValue;
+    }
+    return nil;
+  }
+
+  fileprivate func extract_material_name(_ parent_element: XMLElement) -> String? {
+    if let manufactured_product_element = parent_element.xpath(manufactured_product_xpath).first {
+      if let name = manufactured_product_element.xpath("./cda:manufacturedMaterial/cda:name").first {
+
+        var result:String?;
+
+        let delimiter:String = name.firstChild(tag: "delimiter")?.stringValue ?? " ";
+
+        if let prefix:XMLElement = name.firstChild(tag: "prefix"), !prefix.isBlank {
+          result = result ?? "" + prefix.stringValue + delimiter;
+        }
+
+        if let given:XMLElement = name.firstChild(tag: "given"), !given.isBlank {
+          result = result ?? "" + given.stringValue + delimiter;
+        }
+
+        if let family:XMLElement = name.firstChild(tag: "family"), !family.isBlank {
+          result = result ?? "" + family.stringValue + delimiter;
+        }
+
+        if let suffix:XMLElement = name.firstChild(tag: "suffix"), !suffix.isBlank {
+          result = result ?? "" + suffix.stringValue + delimiter;
+        }
+
+        if let result = result {
+          return result.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines);
+        }
+
+      }
+    }
+    return nil;
   }
 
   fileprivate func extract_dose_restriction(_ parent_element: XMLElement, medication: CDAKMedication) {

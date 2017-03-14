@@ -1,5 +1,5 @@
 <text>
-    <content ID="immunSect"/>
+    <content ID="{{ section }}"/>
     <table width="100%">
         <thead>
         <tr>
@@ -11,8 +11,8 @@
         </thead>
         <tbody>
         {{#each(entries)}}
-        <tr ID="immun{{ @index }}">
-            <td>{{ medication_product.description }}</td>{{! <!-- TODO: Could be displayName for the code as well --> }}
+        <tr ID="{{ section }}-{{ @index }}">
+            <td id="#{{ section }}-desc-{{ @index }}">{{ medication_product.material_name }}</td>{{! <!-- TODO: Might want to use the displayName from code instead? --> }}
             <td>{{ series_number }}</td>
             <td>{{ times_to_s }}</td>
             <td>{{ status }}</td>

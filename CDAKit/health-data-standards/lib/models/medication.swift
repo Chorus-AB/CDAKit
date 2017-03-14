@@ -78,10 +78,13 @@ open class CDAKMedication: CDAKEntry {
   ///Date medication signed
   open var signed_datetime: Double?   //  type: Integer
 
-  // Manufacturer organization
-  open var manufacturer_organization: String?   //  type: Integer
+  // Manufacturer organization NAME. Is Organization according to the xsd.
+  open var manufacturer_organization: String?   //  type: String
 
-  
+  // Material name, this is optional but nice to have. Note that according to the xsd this is a HumanName which I concatenate
+  // TODO: The structure could be altered to better suit the CCDA model?
+  open var material_name: String?   //  type: String
+
   
 
   /**
@@ -164,6 +167,7 @@ extension CDAKMedication {
     if let signed_datetime = signed_datetime { vals["signed_datetime"] = Box(signed_datetime) }
 
     if let manufacturer_organization = manufacturer_organization { vals["manufacturer_organization"] = Box(manufacturer_organization) }
+    if let material_name = material_name { vals["material_name"] = Box(material_name) }
 
     if let dose_indicator = dose_indicator { vals["dose_indicator"] = Box(dose_indicator) }
     if let free_text_sig = free_text_sig { vals["free_text_sig"] = Box(free_text_sig) }
@@ -217,6 +221,7 @@ extension CDAKMedication {
     if let signed_datetime = signed_datetime { dict["signed_datetime"] = signed_datetime as AnyObject? }
 
     if let manufacturer_organization = manufacturer_organization { dict["manufacturer_organization"] = manufacturer_organization as AnyObject? }
+    if let material_name = material_name { dict["material_name"] = material_name as AnyObject? }
 
     if let dose_indicator = dose_indicator { dict["dose_indicator"] = dose_indicator as AnyObject? }
     if let free_text_sig = free_text_sig { dict["free_text_sig"] = free_text_sig as AnyObject? }
