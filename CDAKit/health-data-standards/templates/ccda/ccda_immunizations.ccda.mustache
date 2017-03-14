@@ -58,7 +58,7 @@
                             {{#medication_product}}{{!<!-- Push to stack for CCDA_CODE -->}}
                                 <manufacturedMaterial>
                                     {{>ccda_code_with_reference.ccda}}
-                                    <name>{{ medication_product.material_name }}</name> {{! <!-- TODO: Set or generate description? --> }}
+                                    <name>{{ material_name }}</name> {{! <!-- TODO: Set or generate description? --> }}
                                     <lotNumberText>{{series_number}}</lotNumberText>
                                 </manufacturedMaterial>
                                 {{#manufacturer_organization}}

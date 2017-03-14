@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Mustache
+
 /**
 Record of immunization
 */
@@ -35,6 +37,19 @@ open class CDAKImmunization: CDAKEntry {
     set (value) {negation_reason = value}
   }
 
+}
+
+extension CDAKImmunization {
+  override open var mustacheBox: MustacheBox {
+    return Box([
+            "series_number": series_number as Any,
+            "reaction": reaction as Any,
+            "performer": performer as Any,
+            "medication_product": medication_product as Any,
+            "refusal_ind": refusal_ind as Any,
+            "refusal_reason": refusal_reason as Any
+    ])
+  }
 }
 
 extension CDAKImmunization {
