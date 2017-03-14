@@ -12,6 +12,21 @@ import Mustache
 public struct CDAKValueAndUnit {
   var value: Double?
   var unit: String?
+
+  public init() {}
+
+  public init(value: Double?, unit: String?) {
+    self.value = value;
+    self.unit = unit;
+  }
+
+  public init(value: NSDecimalNumber?, unit: String?) {
+    if let value:NSDecimalNumber = value {
+      self.value = value.doubleValue;
+    }
+    self.unit = unit;
+  }
+
 }
 
 extension CDAKValueAndUnit: MustacheBoxable {

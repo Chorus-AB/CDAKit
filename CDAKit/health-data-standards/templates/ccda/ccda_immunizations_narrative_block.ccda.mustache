@@ -15,7 +15,7 @@
             <td id="#{{ section }}-desc-{{ @index }}">{{ medication_product.material_name }}</td>{{! <!-- TODO: Might want to use the displayName from code instead? --> }}
             <td>{{ series_number }}</td>
             <td>{{ times_to_s }}</td>
-            <td>{{ status }}</td>
+            <td>{{#status}}{{.}}{{/status}}{{^status}}completed{{/status}}</td>
         </tr>{{/}}
         </tbody>
     </table>

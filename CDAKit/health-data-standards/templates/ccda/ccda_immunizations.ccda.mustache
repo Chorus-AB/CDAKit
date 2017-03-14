@@ -42,7 +42,9 @@
                         <reference value="#{{ section }}-desc-{{ @index }}"/>
                     </text>
 
-                    <statusCode code="completed"/>
+                    {{#status}}<statusCode code="{{.}}"/>{{/status}}
+                    {{^status}}<statusCode code="completed"/>{{/status}}
+
                     <effectiveTime {{{ value_or_null_flavor(as_point_in_time) }}}/>
 
                     {{#medication_product.route}}<routeCode code="{{ code }}" codeSystem="{{ codeSystemOid }}" codeSystemName="{{ codeSystem }}" {{#displayName}}displayName="{{ . }}"{{/displayName}}/>{{/medication_product.route}}
