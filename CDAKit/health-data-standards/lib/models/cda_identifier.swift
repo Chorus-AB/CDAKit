@@ -42,8 +42,12 @@ open class CDAKCDAIdentifier: Equatable, Hashable, CDAKJSONInstantiable, CustomS
   // MARK: CDA properties
   ///CDA Root
   open var root: String?
+
   ///CDA Extension
   open var extension_id: String?
+
+  ///CDA Extension
+  open var is_null: Bool = false;
   
   open var hashValue: Int {
     return "\(root)\(extension_id)".hashValue
@@ -104,6 +108,7 @@ extension CDAKCDAIdentifier: MustacheBoxable {
       return Box([
         "root": self.root,
         "extension": self.extension_id,
+        "is_null": self.is_null,
         "as_string": self.as_string
       ])
   }
