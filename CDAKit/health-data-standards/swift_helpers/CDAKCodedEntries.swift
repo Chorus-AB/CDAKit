@@ -124,13 +124,10 @@ extension CDAKCodedEntry: MustacheBoxable {
     var boxedValues: [String:MustacheBox] {
         var vals:[String:MustacheBox] = [:];
         vals["codeSystem"] = Box(self.codeSystem)
+        vals["code"] = Box(code)
 
         if let codeSystemOid = self.codeSystemOid {
             vals["codeSystemOid"] = Box(codeSystemOid)
-        }
-
-        if let code = self.code {
-            vals["code"] = Box(code)
         }
 
         if let displayName = self.displayName {
