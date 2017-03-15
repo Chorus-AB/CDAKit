@@ -106,10 +106,10 @@ extension CDAKCDAIdentifier: MustacheBoxable {
   // MARK: - Mustache marshalling
   public var mustacheBox: MustacheBox {
       return Box([
-        "root": self.root,
-        "extension": self.extension_id,
-        "is_null": self.is_null,
-        "as_string": self.as_string
+        "root": self.root as Any,
+        "extension": self.extension_id as Any,
+        "is_null": self.is_null as Any,
+        "as_string": self.as_string as Any
       ])
   }
 }

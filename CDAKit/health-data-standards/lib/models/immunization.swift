@@ -40,15 +40,17 @@ open class CDAKImmunization: CDAKEntry {
 }
 
 extension CDAKImmunization {
-  override open var mustacheBox: MustacheBox {
-    return Box([
-            "series_number": series_number as Any,
-            "reaction": reaction as Any,
-            "performer": performer as Any,
-            "medication_product": medication_product as Any,
-            "refusal_ind": refusal_ind as Any,
-            "refusal_reason": refusal_reason as Any
-    ])
+
+  override open var boxedValues: [String:MustacheBox] {
+
+    var vals:[String:MustacheBox] = super.boxedValues;
+    vals["series_number"] = Box(series_number);
+    vals["reaction"] = Box(reaction);
+    vals["performer"] = Box(performer);
+    vals["medication_product"] = Box(medication_product);
+    vals["refusal_ind"] = Box(refusal_ind);
+    vals["refusal_reason"] = Box(refusal_reason);
+    return vals;
   }
 }
 
