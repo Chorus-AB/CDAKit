@@ -1,5 +1,5 @@
 {{#preferred_code}}
-    <code code="{{ code }}" codeSystem="{{ codeSystemOid }}" codeSystemName="{{ codeSystem }}"{{#displayName}} displayName="{{ . }}"{{/displayName}}{{#version}} version="{{.}}"{{/version}}>
+    <code code="{{ code }}" codeSystem="{{ codeSystemOid }}" codeSystemName="{{ codeSystem }}"{{#displayName}} displayName="{{ . }}"{{/displayName}}{{#codeSystemVersion}} codeSystemVersion="{{ . }}"{{/codeSystemVersion}}>
 {{/preferred_code}}
 {{^preferred_code}}
 <code nullFlavor="UNK">

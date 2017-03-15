@@ -135,7 +135,7 @@ extension CDAKCodedEntry: MustacheBoxable {
         }
 
         if let version = self.version {
-            vals["version"] = Box(version)
+            vals["codeSystemVersion"] = Box(version)
         }
 
         if let originalText = self.originalText {
