@@ -1,11 +1,13 @@
 {{#preferred_code}}
-<code code="{{ code }}" codeSystem="{{ codeSystemOid }}" codeSystemName="{{ codeSystem }}" {{#displayName}}displayName="{{ . }}"{{/displayName}}>
+    <code code="{{ code }}" codeSystem="{{ codeSystemOid }}" codeSystemName="{{ codeSystem }}"{{#displayName}} displayName="{{ . }}"{{/displayName}}{{#version}} version="{{.}}"{{/version}}>
 {{/preferred_code}}
 {{^preferred_code}}
 <code nullFlavor="UNK">
 {{/preferred_code}}
-<originalText><reference value="#{{ section }}-desc-{{ @index }}"/></originalText>
+<originalText>
+    {{#preferred_code.original_text}}<reference value="#{{ section }}-text-{{ @index }}"/>{{/preferred_code.original_text}}
+    {{^preferred_code.original_text}}<reference value="#{{ section }}-desc-{{ @index }}"/>{{/preferred_code.original_text}}</originalText>
 {{#each(translation_codes)}}
-<translation code="{{ code }}" codeSystem="{{ oid_for_code_system(codeSystem) }}" codeSystemName="{{ codeSystem }}" {{#displayName}}displayName="{{ . }}"{{/displayName}}/>
+<translation code="{{ code }}" codeSystem="{{ oid_for_code_system(codeSystem) }}" codeSystemName="{{ codeSystem }}"{{#displayName}} displayName="{{ . }}"{{/displayName}}{{#version}} version="{{.}}"{{/version}}/>
 {{/}}
 </code>

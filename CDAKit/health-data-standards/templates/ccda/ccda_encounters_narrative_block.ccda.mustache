@@ -1,52 +1,38 @@
 <text>
-  <table width="100%">
-    <thead>
-      <tr>
-        <th>Description</th>
-        <th>Codes</th>
-        <th>Time</th>
-        {{#value }}<th>Value</th>{{/value }}
-      </tr>
-    </thead>
-    <tbody>
-      {{#each(entries)}}<tr>
-        <td ID="{{ section }}-desc-{{ @index }}">{{ description }}</td>
-        <td ID="{{ section }}-code-{{ @index }}">{{ codes_to_s }}<br/>{{ specifics }}</td>
-        <td>{{ times_to_s }}</td>
-        {{#value }}<td>{{#values }}
-        {{#scalar }}{{{.}}}<br/>{{/scalar}}
-        {{^scalar}}{{#each(codes)}}{{@key }}: {{# each(.)}}{{.}}{{^ @last }},{{/}}{{/}}<br/>{{/}}{{/scalar}}
-        {{#units }}{{{.}}}<br/>{{/units}}
-        {{^scalar}}{{^codes}}UNKNOWN VALUE{{/codes}}{{/scalar}}
-        {{/values }}</td>{{/value }}
-      </tr>{{/}}
-    </tbody>
-  </table>
-
-
     <table width="100%">
         <tbody>
-            <tr>
-                <td styleCode="Bold">Date:</td>
-                <td ID="encounters-date-0">{{ times_to_s }}</td>
-            </tr>
-            <tr>
-                <td styleCode="Bold">Type:</td>
-                <td ID="encounters-desc-0">Intagninganteckning</td>
-            </tr>
-            <tr>
-                <td styleCode="Bold">Reason:</td>
-                <td ID="encounters-desc-0">careContactReason</td>
-            </tr>
-            <tr>
-                <td colspan="2" styleCode="Bold">Details:</td>
-            </tr>
-            <tr>
-                <td ID="encounters-text-0" colspan="2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu vulputate velit, vel cursus arcu. Vestibulum ultrices ipsum sit amet sem accumsan, vel bibendum sapien volutpat. Sed rutrum aliquam enim, et blandit leo blandit et. Mauris arcu nulla, elementum sed mauris semper, porttitor feugiat quam. Sed tempus hendrerit eleifend. Nunc mollis eros at neque posuere, sit amet pulvinar justo cursus. Proin vulputate augue et felis venenatis tempus. Praesent pulvinar, lacus dictum mattis vestibulum, metus nisi imperdiet sapien, sed aliquet odio lacus et quam.
-
-            Sed commodo orci id nulla finibus dictum sollicitudin sit amet justo. Duis aliquam tellus tempus, dictum erat id, accumsan lectus. In facilisis quam ligula, et hendrerit libero tristique ac. Nam non sollicitudin magna. Donec arcu nibh, pellentesque lacinia nisi id, egestas maximus lorem. Suspendisse neque arcu, vestibulum in dapibus in, mattis at ligula. Quisque eget dui ante. Morbi non imperdiet urna. Nullam et ullamcorper justo. Duis aliquam, magna ut blandit consectetur, ante sem vulputate augue, a aliquet arcu nibh vitae augue. Nullam pharetra lorem dolor, eget mollis mi facilisis a. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin nec felis sapien. Maecenas interdum erat pulvinar ex elementum, nec cursus leo molestie. Donec porta, magna id facilisis feugiat, lectus magna facilisis odio, nec maximus nulla dolor sed ipsum. Aliquam sit amet ultrices ipsum.</td>
-            </tr>
+            {{#each(entries)}}
+                <tr>
+                    <td styleCode="Bold">Date:</td>
+                    <td ID="{{ section }}-date-{{ @index }}">{{ times_to_s }}</td>
+                </tr>
+                {{#status}}
+                    <tr>
+                        <td styleCode="Bold">Status:</td>
+                        <td ID="{{ section }}-status-{{ @index }}">{{ . }}</td>
+                    </tr>
+                {{/status}}
+                {{#description}}
+                    <tr>
+                        <td styleCode="Bold">Reason:</td>
+                        <td ID="{{ section }}-desc-{{ @index }}">{{.}}</td>
+                    </tr>
+                {{/description}}
+                {{#preferred_code}}
+                    <tr>
+                        <td styleCode="Bold">Type:</td>
+                        <td ID="{{ section }}-type-{{ @index }}">{{ displayName }}</td> <!-- from code -->
+                    </tr>
+                    {{#original_text}}
+                        <tr>
+                            <td colspan="2" styleCode="Bold">Details:</td>
+                        </tr>
+                        <tr>
+                            <td ID="{{ section }}-text-{{ @index }}" colspan="2">{{.}}</td>
+                        </tr>
+                    {{/original_text}}
+                {{/preferred_code}}
+            {{/}}
         </tbody>
     </table>
-
 </text>

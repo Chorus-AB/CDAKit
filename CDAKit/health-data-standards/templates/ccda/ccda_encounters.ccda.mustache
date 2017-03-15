@@ -18,9 +18,6 @@
                         <id root="{{ UUID_generate(nil) }}"/>
                     {{/cda_identifier}}
                     {{>ccda_code_with_reference.ccda}}
-                    <text>
-                        <reference value="#encounters-desc-{{ @index }}"/>
-                    </text>
                     <effectiveTime {{{ value_or_null_flavor(as_point_in_time) }}}/>
                     {{#indication}}{{> ccda_entry_detail_indication.ccda}}{{/indication}}
                     {{>ccda_performer.ccda}}
