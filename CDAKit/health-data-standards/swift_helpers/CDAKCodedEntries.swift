@@ -40,7 +40,10 @@ public struct CDAKCodedEntry: CustomStringConvertible, Equatable, Hashable {
   public var codeSystem: String
   ///The specific vocabulary code for the term
   public var code: String
-  
+
+  public var version: String?
+  public var originalText: String?
+
   fileprivate var _displayName: String?
   ///the human-readable description for the term
   public var displayName: String? {
@@ -81,18 +84,20 @@ public struct CDAKCodedEntry: CustomStringConvertible, Equatable, Hashable {
   - parameter codeSystemOid: (String) OID for the specified vocabulary. Optional. Will be automatically looked up by codeSystem key if not supplied
   - parameter displayName: (String) The human-readable description for the term
   */
-  public init(codeSystem: String, code: String, codeSystemOid: String? = nil, displayName: String? = nil) {
+  public init(codeSystem: String, code: String, codeSystemOid: String? = nil, displayName: String? = nil, version: String? = nil, originalText:String? = nil) {
     self.codeSystem = codeSystem
     self.code = code
     self.codeSystemOid = codeSystemOid
     self.displayName = displayName
+    self.version = version
+    self.originalText = originalText
     CDAKCodeSystemHelper.addCodeSystem(codeSystem, oid: codeSystemOid)
   }
 
   // MARK: Standard properties
   ///Debugging description
   public var description: String {
-    return ("codeSystem: \(codeSystem), codeSystemOid: \(codeSystemOid), code: \(code), displayName: \(displayName)")
+    return ("codeSystem: \(codeSystem), codeSystemOid: \(codeSystemOid), code: \(code), displayName: \(displayName), version: \(version), originalText: \(originalText)")
   }
   
   ///hash value
@@ -115,18 +120,36 @@ public func == (lhs: CDAKCodedEntry, rhs: CDAKCodedEntry) -> Bool {
 }
 
 extension CDAKCodedEntry: MustacheBoxable {
-  // MARK: - Mustache marshalling
-  var boxedValues: [String:MustacheBox] {
-    return [
-      "codeSystem" :  Box(self.codeSystem),
-      "codeSystemOid" :  Box(self.codeSystemOid),
-      "code" :  Box(self.code),
-      "displayName": Box(displayName)
-    ]
-  }
-  public var mustacheBox: MustacheBox {
-    return Box(boxedValues)
-  }
+    // MARK: - Mustache marshalling
+    var boxedValues: [String:MustacheBox] {
+        var vals:[String:MustacheBox] = [:];
+        vals["codeSystem"] = Box(self.codeSystem)
+
+        if let codeSystemOid = self.codeSystemOid {
+            vals["codeSystemOid"] = Box(codeSystemOid)
+        }
+
+        if let code = self.code {
+            vals["code"] = Box(code)
+        }
+
+        if let displayName = self.displayName {
+            vals["displayName"] = Box(displayName)
+        }
+
+        if let version = self.version {
+            vals["version"] = Box(version)
+        }
+
+        if let originalText = self.originalText {
+            vals["original_text"] = Box(originalText)
+        }
+
+        return vals;
+    }
+    public var mustacheBox: MustacheBox {
+        return Box(boxedValues);
+    }
 }
 
 
@@ -278,8 +301,8 @@ public struct CDAKCodedEntries : Collection, Sequence, CustomStringConvertible, 
      - parameter codeSystemOid: the OID associated with the vocabulary. If it is not supplied, the OID will be looked up based on the supplied vocabulary codeSystem
      - parameter displayName: the human-readable concept description
      */
-    public init(codeSystem:String, code: String, codeSystemOid: String? = nil, displayName: String? = nil){
-        addCodes(codeSystem, code: code, codeSystemOid: codeSystemOid, displayName: displayName)
+    public init(codeSystem:String, code: String, codeSystemOid: String? = nil, displayName: String? = nil, version: String? = nil, originalText:String? = nil){
+        addCodes(codeSystem, code: code, codeSystemOid: codeSystemOid, displayName: displayName, version: version, originalText: originalText)
     }
     /**
      Basic initializer
@@ -288,7 +311,8 @@ public struct CDAKCodedEntries : Collection, Sequence, CustomStringConvertible, 
      */
     public init(entries: [CDAKCodedEntry]) {
         for entry in entries {
-            addCodes(entry.codeSystem, code: entry.code, codeSystemOid: entry.codeSystemOid, displayName: entry.displayName)
+            addCodes(entry.codeSystem, code: entry.code, codeSystemOid: entry.codeSystemOid,
+                    displayName: entry.displayName, version: entry.version, originalText: entry.originalText)
         }
     }
     /**
@@ -298,7 +322,8 @@ public struct CDAKCodedEntries : Collection, Sequence, CustomStringConvertible, 
      */
     public init(entry: CDAKCodedEntry?) {
         if let entry = entry {
-            addCodes(entry.codeSystem, code: entry.code, codeSystemOid: entry.codeSystemOid, displayName: entry.displayName)
+            addCodes(entry.codeSystem, code: entry.code, codeSystemOid: entry.codeSystemOid,
+                    displayName: entry.displayName, version: entry.version, originalText: entry.originalText)
         }
     }
 
@@ -320,7 +345,8 @@ public struct CDAKCodedEntries : Collection, Sequence, CustomStringConvertible, 
      */
     mutating public func addCodes(_ entries: [CDAKCodedEntry]) {
         for entry in entries {
-            addCodes(entry.codeSystem, code: entry.code, codeSystemOid: entry.codeSystemOid, displayName: entry.displayName)
+            addCodes(entry.codeSystem, code: entry.code, codeSystemOid: entry.codeSystemOid,
+                    displayName: entry.displayName, version: entry.version, originalText: entry.originalText)
         }
     }
 
@@ -330,7 +356,8 @@ public struct CDAKCodedEntries : Collection, Sequence, CustomStringConvertible, 
      */
     mutating public  func addCodes(_ entry: CDAKCodedEntry?) {
         if let entry = entry {
-            addCodes(entry.codeSystem, code: entry.code, codeSystemOid: entry.codeSystemOid, displayName: entry.displayName)
+            addCodes(entry.codeSystem, code: entry.code, codeSystemOid: entry.codeSystemOid,
+                    displayName: entry.displayName, version: entry.version, originalText: entry.originalText)
         }
     }
 
@@ -346,9 +373,11 @@ public struct CDAKCodedEntries : Collection, Sequence, CustomStringConvertible, 
      - parameter codeSystemOid: the OID associated with the vocabulary. If it is not supplied, the OID will be looked up based on the supplied vocabulary codeSystem
      - parameter displayName: the human-readable concept description
      */
-    mutating public  func addCodes(_ codeSystem: String, code: String, codeSystemOid: String? = nil, displayName: String? = nil) {
+    mutating public  func addCodes(_ codeSystem: String, code: String, codeSystemOid: String? = nil,
+                                   displayName: String? = nil, version: String? = nil, originalText:String? = nil) {
         //primary function for adding codes
-        var aNewCode = CDAKCodedEntry(codeSystem: codeSystem, code: code, codeSystemOid: codeSystemOid, displayName: displayName)
+        var aNewCode = CDAKCodedEntry(codeSystem: codeSystem, code: code, codeSystemOid: codeSystemOid,
+                displayName: displayName, version: version, originalText: originalText)
 
         self._codeSystems.insert(codeSystem)
 

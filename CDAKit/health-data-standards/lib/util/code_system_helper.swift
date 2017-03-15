@@ -27,6 +27,7 @@ open class CDAKCodeSystemHelper {
     "1.2.752.129.2.1.3.3"     :   "Samordningsnummer",
     "1.2.752.97.3.1.3"     :   "SLL-Reservnummer",
     "1.2.752.129.2.2.1.4"     :   "KV Befattning", // Förvaltas av HSA förvaltningsgrupp, Inera. http://www.inera.se/Documents/TJANSTER_PROJEKT/Katalogtjanst_HSA/Innehall/hsa_innehall_befattning_version_3_2_2013-10-22.pdf
+    "1.2.752.129.2.2.2.11"    :   "KV Anteckningstyp", // Tillåtna värden från KV Anteckningstyp
 
     "1.2.752.129.2.2.3.1.1"     :   "ATC SKL",
     "2.16.840.1.113883.6.73"     :   "ATC",

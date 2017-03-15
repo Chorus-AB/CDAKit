@@ -28,7 +28,7 @@ public struct CDAKVocabularyKeys {
   public static let SLLRESERVNR = "SLL-Reservnummer" // SLL HSF
 
   public static let KV_BEFATTNING = "KV Befattning" // Förvaltas av HSA förvaltningsgrupp, Inera. http://www.inera.se/Documents/TJANSTER_PROJEKT/Katalogtjanst_HSA/Innehall/hsa_innehall_befattning_version_3_2_2013-10-22.pdf
-
+  public static let KV_ANTECKNINGSTYP = "KV Anteckningstyp" // // Tillåtna värden från KV Anteckningstyp
 
   // Swedish pharmaceuticals
   public static let ATC = "ATC"  // Classification of medicines http://www.whocc.no/atcddd/
