@@ -8,6 +8,6 @@
     {{#preferred_code.original_text}}<reference value="#{{ section }}-text-{{ @index }}"/>{{/preferred_code.original_text}}
     {{^preferred_code.original_text}}<reference value="#{{ section }}-desc-{{ @index }}"/>{{/preferred_code.original_text}}</originalText>
 {{#each(translation_codes)}}
-<translation code="{{ code }}" codeSystem="{{ oid_for_code_system(codeSystem) }}" codeSystemName="{{ codeSystem }}"{{#displayName}} displayName="{{ . }}"{{/displayName}}{{#version}} version="{{.}}"{{/version}}/>
+<translation code="{{ code }}" codeSystem="{{ oid_for_code_system(codeSystem) }}" codeSystemName="{{ codeSystem }}"{{#displayName}} displayName="{{ . }}"{{/displayName}}{{#codeSystemVersion}} codeSystemVersion="{{.}}"{{/codeSystemVersion}}/>
 {{/}}
 </code>
