@@ -17,8 +17,13 @@ class CDAKImport_CDA_NarrativeReferenceHandler {
     let ids = doc.xpath(path)
     for id in ids {
       if let tag = id["ID"] {
-        let value = id.stringValue //Nokogiri.content # aliases node.text node.inner_text node.to_str
-        id_map[tag] = value
+        if tag.hasPrefix("encounters-text-") {
+          let value = id.children.map{$0.rawXML}.reduce("", +) // "Our" narrative, which can have simple formatting
+          id_map[tag] = value
+        } else {
+          let value = id.stringValue //Nokogiri.content # aliases node.text node.inner_text node.to_str
+          id_map[tag] = value
+        }
       }
     }
   }
