@@ -1034,6 +1034,7 @@ extension CDAKRecord {
         self.identifiers = record.identifiers
         self.custodian = record.custodian
         self.clinicalTrialParticipant = record.clinicalTrialParticipant
+        self.header = record.header
     }
     
     

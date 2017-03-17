@@ -275,7 +275,7 @@ open class CDAKEntry: NSObject , CDAKThingWithCodes, CDAKPropertyAddressable, CD
   /**
    Tries to find a single point in time for this entry. Will first return time if it is present, then fall back to start_time and finally end_time
    */
-  func as_point_in_time() -> Double? {
+  public func as_point_in_time() -> Double? {
     if let time = time {
       return time
     }
