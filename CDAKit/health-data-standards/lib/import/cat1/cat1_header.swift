@@ -71,7 +71,11 @@ class CDAKImport_cat1_HeaderImporter {
       author.ids = import_ids(assignedAuthor)
       author.addresses = assignedAuthor.xpath("./cda:addr").flatMap({addr in CDAKImport_CDA_LocatableImportUtils.import_address(addr)})
       author.telecoms = assignedAuthor.xpath("./cda:telecom").flatMap({tele in CDAKImport_CDA_LocatableImportUtils.import_telecom(tele)})
-      
+
+      if let codes:CDAKCodedEntries = CDAKImport_CDA_SectionImporter.extract_codes(assignedAuthor, code_xpath: "./cda:code") {
+        author.codes = codes;
+      }
+
       if let person_info = assignedAuthor.xpath("./cda:assignedPerson/cda:name").first {
         author.person = CDAKPerson(prefix: person_info.xpath("./cda:prefix").first?.stringValue, given_name: person_info.xpath("./cda:given").first?.stringValue, family_name: person_info.xpath("./cda:family").first?.stringValue, suffix: person_info.xpath("./cda:suffix").first?.stringValue)
       }

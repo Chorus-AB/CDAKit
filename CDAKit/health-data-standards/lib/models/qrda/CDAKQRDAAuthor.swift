@@ -9,7 +9,7 @@
 import Foundation
 import Mustache
 
-open class CDAKQRDAAuthor {
+open class CDAKQRDAAuthor: CDAKThingWithCodes {
   open var time = Date()
   open var ids: [CDAKCDAIdentifier] = []
   open var addresses: [CDAKAddress] = []
@@ -18,12 +18,14 @@ open class CDAKQRDAAuthor {
   open var device: CDAKQRDADevice?
   open var organization: CDAKOrganization?
 
+  public var codes:CDAKCodedEntries = CDAKCodedEntries();
+
   public init() { }
 }
 
 extension CDAKQRDAAuthor: CustomStringConvertible {
   public var description: String {
-    return "CDAKQRDAAuthor => time:\(time), ids:\(ids), addresses:\(addresses), telecoms:\(telecoms), person:\(person), device:\(device), organization: \(organization)"
+    return "CDAKQRDAAuthor => time:\(time), ids:\(ids), addresses:\(addresses), telecoms:\(telecoms), person:\(person), device:\(device), organization: \(organization), codes: \(codes)"
   }
 }
 
@@ -36,7 +38,9 @@ extension CDAKQRDAAuthor: MustacheBoxable {
       "telecoms" :  Box(telecoms),
       "person" :  Box(person),
       "device" :  Box(device),
-      "organization" :  Box(organization)
+      "organization" :  Box(organization),
+      "codes" :  Box(codes),
+      "preferred_code" :  Box(codes.first)
     ]
   }
   
