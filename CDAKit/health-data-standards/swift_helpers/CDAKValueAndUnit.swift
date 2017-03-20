@@ -10,8 +10,8 @@ import Foundation
 import Mustache
 
 public struct CDAKValueAndUnit {
-  var value: Double?
-  var unit: String?
+  public var value: Double?
+  public var unit: String?
 
   public init() {}
 
