@@ -6,7 +6,9 @@
   <templateId root="2.16.840.1.113883.10.20.22.1.1" />
   <templateId root="2.16.840.1.113883.10.20.22.1.2"/>
   {{#donotActivate}}<id root="2.16.840.1.113883.19.5" extension="{{ patient.id }}" assigningAuthorityName="Cypress Project"/>{{/donotActivate}}
+
   <id root="{{ UUID_generate(nil) }}"/>
+
   <code code="34133-9" displayName="Summarization of episode note" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
   <title>{{#patient.header.title}}{{.}}{{/patient.header.title}}{{^patient.header.title}}CDAKit Generated C32: {{ patient.first }} {{ patient.last }}{{/patient.header.title}}</title>
   <effectiveTime value="{{ date_as_number(nil) }}"/>

@@ -10,7 +10,7 @@
       <!--CCD Medication activity - Required-->
       <substanceAdministration classCode="SBADM" moodCode="EVN">
         <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
-        <id root="{{ UUID_generate(nil) }}"/>
+        {{> ccda_identifier.ccda }}
         <statusCode code="completed"/>
         <effectiveTime xsi:type="IVL_TS">
           <low {{{ value_or_null_flavor(as_point_in_time) }}}/>

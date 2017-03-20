@@ -10,7 +10,6 @@
       <organizer classCode="BATTERY" moodCode="EVN">
         <templateId root="2.16.840.1.113883.10.20.22.4.1"/>
         <!--Result organizer template -->
-        <id root="{{ UUID_generate(nil) }}"/>
         <code nullFlavor="NA"/>
         <statusCode code="completed"/>
         <effectiveTime value="{{ date_as_number(nil) }}"/>
@@ -33,7 +32,7 @@
           <observation classCode="OBS" moodCode="EVN">
             <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
             <!-- Result observation template -->
-            <id root="{{ UUID_generate(nil) }}"/>
+            {{> ccda_identifier.ccda }}
             {{{ code_display }}}
             <text>
               <reference value="#results-desc-{{ @index }}"/>

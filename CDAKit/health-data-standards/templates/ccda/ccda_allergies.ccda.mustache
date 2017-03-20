@@ -12,7 +12,7 @@
       <act classCode="ACT" moodCode="EVN">
         <templateId root="2.16.840.1.113883.10.20.22.4.30"/>
         <!--Allergy act template -->
-        <id root="{{ UUID_generate(nil) }}"/>
+        {{> ccda_identifier.ccda }}
         <code nullFlavor="NA"/>
         <statusCode code="active"/>
         <effectiveTime>

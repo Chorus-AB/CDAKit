@@ -119,6 +119,8 @@ class CDAKImport_CDA_SectionImporter {
   }
 
   func extract_id(_ parent_element: XMLElement, entry: CDAKThingWithIdentifier) {
+    // TODO: All elements beside ClinicalDocument (1..1) and Section(0..1) have either 0..* or 1..* constraints.
+    // so just picking first doesn't seem quite right
     if let id_element = parent_element.xpath(id_xpath).first {
       let identifier = CDAKCDAIdentifier()
       identifier.root = id_element["root"]

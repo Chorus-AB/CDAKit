@@ -19,7 +19,7 @@
           <observation classCode="OBS" moodCode="EVN">
             <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
             <!-- Result observation template -->
-            <id root="{{ UUID_generate(nil) }}"/>
+            {{> ccda_identifier.ccda }}
             {{{ code_display }}}
             <text>
               <reference value="vitals-desc-{{ @index }}"/>

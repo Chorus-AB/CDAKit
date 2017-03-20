@@ -1,0 +1,6 @@
+{{#cda_identifier}}
+{{> cat1_id.cat1 }}
+{{/cda_identifier}}
+{{^cda_identifier}}
+<id root="{{ UUID_generate(nil) }}"/>
+{{/cda_identifier}}

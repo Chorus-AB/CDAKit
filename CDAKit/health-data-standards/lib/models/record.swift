@@ -100,9 +100,12 @@ open class CDAKRecord: NSObject, NSCopying, CDAKPropertyAddressable {
   open var religious_affiliation: CDAKCodedEntries = CDAKCodedEntries()
   ///effective time for record (not date created - date last valid)
   open var effective_time: Double?
-  
+
+  // TODO: I can't see this being used anywhere templatewise.
   ///global unique identifier for record. Defaulted.
   open var _id: String = UUID().uuidString
+
+  // TODO: Add cda_identifiers?
   
   /**
   When creating this record, you may wish to supply a custom header (CDAKQRDAHeader) or during CDA XML generation a default boilerplate header will be applied
