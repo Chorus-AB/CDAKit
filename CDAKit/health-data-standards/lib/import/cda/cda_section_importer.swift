@@ -119,8 +119,7 @@ class CDAKImport_CDA_SectionImporter {
   }
 
   func extract_id(_ parent_element: XMLElement, entry: CDAKThingWithIdentifier) {
-    // TODO: All elements beside ClinicalDocument (1..1) and Section(0..1) have either 0..* or 1..* constraints.
-    // so just picking first doesn't seem quite right
+    // TODO: All elements beside ClinicalDocument (1..1) and Section(0..1) have either 0..* or 1..* constraints, so just picking first doesn't seem quite right
     if let id_element = parent_element.xpath(id_xpath).first {
       let identifier = CDAKCDAIdentifier()
       identifier.root = id_element["root"]
@@ -239,29 +238,35 @@ class CDAKImport_CDA_SectionImporter {
     }
   }
   
-  /**
-   Primary method responsible for extracting a code/codeSystem/displayName from a given code entry
-   
-   - parameter parent_element: the XML element containing the code(s)
-   - parameter code_xpath: XPath query to your coded element within the parent.  Could even be "."
-   - parameter code_system: optional string to override (or just directly supply) a given code system for this entry.  Certain entries (EX: language, race, ethnicity) do not supply a code system directly, but instead rely on an "implied" code system like "CDC Race" which aren't defined in the XML. In this case, the code system tag/name can be supplied directly and then looked up internally (if possible) to obtain the OID, etc.
-  */
-  class func extract_code(_ parent_element: XMLElement, code_xpath: String, code_system: String? = nil) -> CDAKCodedEntry? {
-    if let code_element = parent_element.xpath(code_xpath).first {
-      if let code = code_element["code"] {
-        let display_name = code_element["displayName"]
-        if let code_system = code_system {
-          return CDAKCodedEntry(codeSystem: code_system, code: code, displayName: display_name)
-        } else if let code_system_oid = code_element["codeSystem"] {
-          if let codeSystemName = code_element["codeSystemName"] {
-            CDAKCodeSystemHelper.addCodeSystem(codeSystemName, oid: code_system_oid)
-          }
-          return CDAKCodedEntry(codeSystem: CDAKCodeSystemHelper.code_system_for(code_system_oid), code: code, codeSystemOid: code_system_oid, displayName: display_name)
+    /**
+    Primary method responsible for extracting a code/codeSystem/displayName from a given code entry
+
+    - parameter parent_element: the XML element containing the code(s)
+    - parameter code_xpath: XPath query to your coded element within the parent.  Could even be "."
+    - parameter code_system: optional string to override (or just directly supply) a given code system for this entry.  Certain entries (EX: language, race, ethnicity) do not supply a code system directly, but instead rely on an "implied" code system like "CDC Race" which aren't defined in the XML. In this case, the code system tag/name can be supplied directly and then looked up internally (if possible) to obtain the OID, etc.
+    */
+    class func extract_code(_ parent_element: XMLElement, code_xpath: String, code_system: String? = nil, force_code_system:Bool = true) -> CDAKCodedEntry? {
+        if let code_element = parent_element.xpath(code_xpath).first {
+
+            if let code = code_element["code"] {
+                let display_name = code_element["displayName"]
+
+                if (force_code_system == true && code_system != nil) || (code_element["codeSystem"] == nil && code_system != nil) {
+
+                    return CDAKCodedEntry(codeSystem: code_system!, code: code, displayName: display_name)
+                } else if let code_system_oid = code_element["codeSystem"] {
+
+                    if let codeSystemName = code_element["codeSystemName"], force_code_system == false {
+                        CDAKCodeSystemHelper.addCodeSystem(codeSystemName, oid: code_system_oid)
+                    }
+
+                    return CDAKCodedEntry(codeSystem: CDAKCodeSystemHelper.code_system_for(code_system_oid), code: code, codeSystemOid: code_system_oid, displayName: display_name)
+                }
+
+            }
         }
-      }
+        return nil
     }
-    return nil
-  }
   
   class func extract_codes(_ parent_element: XMLElement, code_xpath: String) -> CDAKCodedEntries? {
     let code_elements = parent_element.xpath(code_xpath)

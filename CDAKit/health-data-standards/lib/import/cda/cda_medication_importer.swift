@@ -58,14 +58,14 @@ class CDAKImport_CDA_MedicationImporter: CDAKImport_CDA_SectionImporter {
         medication.rate = a_rate
       }
       
-      medication.anatomical_approach.addCodes(CDAKImport_CDA_SectionImporter.extract_code(entry_element, code_xpath: "./cda:approachSiteCode", code_system: "SNOMED-CT"))
+      medication.anatomical_approach.addCodes(CDAKImport_CDA_SectionImporter.extract_code(entry_element, code_xpath: "./cda:approachSiteCode", code_system: "SNOMED-CT", force_code_system: false))
       
       extract_dose_restriction(entry_element, medication: medication)
       
-      medication.product_form.addCodes(CDAKImport_CDA_SectionImporter.extract_code(entry_element, code_xpath: "./cda:administrationUnitCode", code_system: "NCI Thesaurus"))
-      medication.delivery_method.addCodes(CDAKImport_CDA_SectionImporter.extract_code(entry_element, code_xpath: "./cda:code", code_system: "SNOMED-CT"))
+      medication.product_form.addCodes(CDAKImport_CDA_SectionImporter.extract_code(entry_element, code_xpath: "./cda:administrationUnitCode", code_system: "NCI Thesaurus", force_code_system: false))
+      medication.delivery_method.addCodes(CDAKImport_CDA_SectionImporter.extract_code(entry_element, code_xpath: "./cda:code", code_system: "SNOMED-CT", force_code_system: false))
       if let type_of_med_xpath = type_of_med_xpath {
-        medication.type_of_medication.addCodes(CDAKImport_CDA_SectionImporter.extract_code(entry_element, code_xpath: type_of_med_xpath, code_system: "SNOMED-CT"))
+        medication.type_of_medication.addCodes(CDAKImport_CDA_SectionImporter.extract_code(entry_element, code_xpath: type_of_med_xpath, code_system: "SNOMED-CT", force_code_system: false))
       }
 
       medication.indication = extract_entry_detail(entry_element, xpath: indication_xpath)
@@ -87,7 +87,7 @@ class CDAKImport_CDA_MedicationImporter: CDAKImport_CDA_SectionImporter {
       medication.material_name = extract_material_name(entry_element)
       medication.manufacturer_organization = extract_manufacturer_organization(entry_element)
 
-      medication.vehicle.addCodes(CDAKImport_CDA_SectionImporter.extract_code(entry_element, code_xpath: vehicle_xpath, code_system: "SNOMED-CT"))
+      medication.vehicle.addCodes(CDAKImport_CDA_SectionImporter.extract_code(entry_element, code_xpath: vehicle_xpath, code_system: "SNOMED-CT", force_code_system: false))
       
       extract_order_information(entry_element, medication: medication)
       
